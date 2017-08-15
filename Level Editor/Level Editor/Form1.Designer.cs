@@ -1,6 +1,6 @@
 ﻿namespace Level_Editor
 {
-    partial class Form1
+    partial class LevelEditorForm1
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // LevelEditorForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 552);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "LevelEditorForm1";
+            this.Text = "Nathan\'s Level Editor";
             this.ResumeLayout(false);
 
         }

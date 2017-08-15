@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Level_Editor
 {
-    public partial class Form1 : Form
+    public partial class LevelEditorForm1 : Form
     {
-        public Form1()
+        public LevelEditorForm1()
         {
             InitializeComponent();
         }
