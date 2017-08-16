@@ -34,9 +34,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 552);
+            this.ClientSize = new System.Drawing.Size(1020, 633);
             this.Name = "LevelEditorForm1";
             this.Text = "Nathan\'s Level Editor";
+            this.Load += new System.EventHandler(this.LevelEditorForm1_Load);
             this.ResumeLayout(false);
 
         }
