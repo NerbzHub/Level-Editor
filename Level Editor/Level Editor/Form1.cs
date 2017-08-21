@@ -76,7 +76,7 @@ namespace Level_Editor
             OpenFileDialog open = new OpenFileDialog();
 
 			open.InitialDirectory = @"C:";
-			open.Filter = "text files[*.txt] Image Files[*.png:*.bmp:*.jpg]";
+			open.Filter = "Text files (*.txt)|*.txt|Image files (*.png *.bmp *.jpg)|*.jpg; *.bmp; *.png";
 
 
 			//Graphics g = CreateGraphics();
