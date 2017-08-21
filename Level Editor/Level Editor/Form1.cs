@@ -13,42 +13,54 @@ namespace Level_Editor
 {
     public partial class LevelEditorForm1 : Form
     {
-        //List<PictureBox> tileTexture = new List<PictureBox>();
+		//List<PictureBox> tileTexture = new List<PictureBox>();
+		enum TileType
+		{
+			ENUM_GRASS,
+			ENUM_LONG_GRASS
+		}
 
-        public LevelEditorForm1()
+		Dictionary<TileType, Bitmap> palette = new Dictionary<TileType, Bitmap>();
+
+		int[,] gridArray = new int[5, 5]
+		{
+			{0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0},
+		};
+
+		Bitmap b = new Bitmap(500, 500);
+
+		public LevelEditorForm1()
         {
             InitializeComponent();
         }
 
         private void LevelEditorForm1_Load(object sender, EventArgs e)
         {
-            PictureBox texGrass = new PictureBox();
-            texGrass.Size = new Size(65, 65);
-            texGrass.BackgroundImage = Properties.Resources.tex_Bloons_terrain_grass;
-            PictureBox texLongGrass = new PictureBox();
-            texLongGrass.Size = new Size(65, 65);
-            texLongGrass.BackgroundImage = Properties.Resources.tex_Bloons_terrain_long_grass;
+			//Example of one image
+            //PictureBox texGrass = new PictureBox();
+            //texGrass.Size = new Size(64, 64);
+            //texGrass.BackgroundImage = Properties.Resources.tex_Bloons_terrain_grass;
+            //PictureBox texLongGrass = new PictureBox();
+            //texLongGrass.Size = new Size(64, 64);
+            //texLongGrass.BackgroundImage = Properties.Resources.tex_Bloons_terrain_long_grass;
+			//End example
 
-            //texGrass.Location = new Point(50, 50);
+			//texGrass.Location = new Point(50, 50);
+
+			//Controls.Add(texGrass);
+
+			palette.Add(TileType.ENUM_GRASS, Properties.Resources.tex_Bloons_terrain_grass);
+			palette.Add(TileType.ENUM_LONG_GRASS, Properties.Resources.tex_Bloons_terrain_long_grass);
+
+			//Graphics graphics = CreateGraphics();
+
+			//graphics.FillRectangle(Properties.Resources.tex_Bloons_terrain_grass, 0, 0, 64, 64);
+
             
-            Controls.Add(texGrass);
-
-            Enum ENUM_GRASS, ENUM_LONG_GRASS;
-
-            Dictionary<int, PictureBox> tileTexture = new Dictionary<int, PictureBox>();
-
-            tileTexture.Add(0, texGrass);
-            tileTexture.Add(1, texLongGrass);
-
-
-            int[,] gridArray = new int[5, 5]
-            {
-                {0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0},
-            };
 
             //tileTexture.Add(texture);
         }
@@ -81,7 +93,7 @@ namespace Level_Editor
 	}
 }
 
-//https://www.youtube.com/watch?v=lk0GsyxCj-U&index=1&list=PL0A865073DA96A7DA - this is the tutorial in xna
+//https://www.youtube.com/watch?v=lk0GsyxCj-U&index=1&list=PL0A864073DA96A7DA - this is the tutorial in xna
 //Bitmap Blitting
 // Look at picture that matt drew.
 // Create an array of enums. The enums then get assigned to textures. 
