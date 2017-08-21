@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +52,33 @@ namespace Level_Editor
 
             //tileTexture.Add(texture);
         }
-    }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+				//Bitmap image = (Bitmap)Image.FromFile(open.FileName);
+				//DemoPictureBox.Image = (Bitmap)Image.FromFile(open.FileName);
+
+				string text = System.IO.File.ReadAllText(open.FileName);
+			}
+        }
+
+		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog save = new SaveFileDialog();
+			if(save.ShowDialog() == DialogResult.OK)
+			{
+				File.WriteAllText(save.FileName, "Hello World");
+			}
+		}
+	}
 }
 
 //https://www.youtube.com/watch?v=lk0GsyxCj-U&index=1&list=PL0A865073DA96A7DA - this is the tutorial in xna
