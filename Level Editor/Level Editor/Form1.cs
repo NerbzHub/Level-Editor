@@ -16,20 +16,23 @@ namespace Level_Editor
 		//List<PictureBox> tileTexture = new List<PictureBox>();
 		enum TileType
 		{
+			ENUM_NONE, 
 			ENUM_GRASS,
 			ENUM_LONG_GRASS
 		}
 
 		Dictionary<TileType, Bitmap> palette = new Dictionary<TileType, Bitmap>();
 
-		int[,] gridArray = new int[5, 5]
+		TileType[,] gridArray = new TileType[5, 5]
 		{
-			{0, 0, 0, 0, 0},
-			{0, 0, 0, 0, 0},
-			{0, 0, 0, 0, 0},
-			{0, 0, 0, 0, 0},
-			{0, 0, 0, 0, 0},
+			{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
+			{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
+			{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
+			{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
+			{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE}
 		};
+
+		//https://stackoverflow.com/questions/3884860/drawing-image-to-bigger-bitmap
 
 		Bitmap b = new Bitmap(500, 500);
 
@@ -56,9 +59,7 @@ namespace Level_Editor
 			palette.Add(TileType.ENUM_GRASS, Properties.Resources.tex_Bloons_terrain_grass);
 			palette.Add(TileType.ENUM_LONG_GRASS, Properties.Resources.tex_Bloons_terrain_long_grass);
 
-			//Graphics graphics = CreateGraphics();
-
-			//graphics.FillRectangle(Properties.Resources.tex_Bloons_terrain_grass, 0, 0, 64, 64);
+			
 
             
 
@@ -73,7 +74,16 @@ namespace Level_Editor
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
-            if (open.ShowDialog() == DialogResult.OK)
+
+			open.InitialDirectory = @"C:";
+			open.Filter = "text files[*.txt] Image Files[*.png:*.bmp:*.jpg]";
+
+
+			//Graphics g = CreateGraphics();
+
+			//g.DrawImage(Properties.Resources.tex_Bloons_terrain_long_grass, 0, 0, 64, 64);
+
+			if (open.ShowDialog() == DialogResult.OK)
             {
 				//Bitmap image = (Bitmap)Image.FromFile(open.FileName);
 				//DemoPictureBox.Image = (Bitmap)Image.FromFile(open.FileName);

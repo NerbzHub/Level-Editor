@@ -35,10 +35,10 @@
 			this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.DemoPictureBox = new System.Windows.Forms.PictureBox();
 			this.tabTexture = new System.Windows.Forms.TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.tabPage3 = new System.Windows.Forms.TabPage();
-			this.tabPage4 = new System.Windows.Forms.TabPage();
+			this.tabTerrain = new System.Windows.Forms.TabPage();
+			this.tabRoad = new System.Windows.Forms.TabPage();
+			this.tabTowers = new System.Windows.Forms.TabPage();
+			this.tabScenery = new System.Windows.Forms.TabPage();
 			this.panel1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DemoPictureBox)).BeginInit();
@@ -99,55 +99,55 @@
 			// 
 			// tabTexture
 			// 
-			this.tabTexture.Controls.Add(this.tabPage1);
-			this.tabTexture.Controls.Add(this.tabPage2);
-			this.tabTexture.Controls.Add(this.tabPage3);
-			this.tabTexture.Controls.Add(this.tabPage4);
+			this.tabTexture.Controls.Add(this.tabTerrain);
+			this.tabTexture.Controls.Add(this.tabRoad);
+			this.tabTexture.Controls.Add(this.tabTowers);
+			this.tabTexture.Controls.Add(this.tabScenery);
 			this.tabTexture.Location = new System.Drawing.Point(809, 27);
 			this.tabTexture.Name = "tabTexture";
 			this.tabTexture.SelectedIndex = 0;
 			this.tabTexture.Size = new System.Drawing.Size(251, 513);
 			this.tabTexture.TabIndex = 2;
 			// 
-			// tabPage1
+			// tabTerrain
 			// 
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(243, 487);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "tabPage1";
-			this.tabPage1.UseVisualStyleBackColor = true;
+			this.tabTerrain.Location = new System.Drawing.Point(4, 22);
+			this.tabTerrain.Name = "tabTerrain";
+			this.tabTerrain.Padding = new System.Windows.Forms.Padding(3);
+			this.tabTerrain.Size = new System.Drawing.Size(243, 487);
+			this.tabTerrain.TabIndex = 0;
+			this.tabTerrain.Text = "Terrain";
+			this.tabTerrain.UseVisualStyleBackColor = true;
 			// 
-			// tabPage2
+			// tabRoad
 			// 
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(243, 487);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "tabPage2";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.tabRoad.Location = new System.Drawing.Point(4, 22);
+			this.tabRoad.Name = "tabRoad";
+			this.tabRoad.Padding = new System.Windows.Forms.Padding(3);
+			this.tabRoad.Size = new System.Drawing.Size(243, 487);
+			this.tabRoad.TabIndex = 1;
+			this.tabRoad.Text = "Road";
+			this.tabRoad.UseVisualStyleBackColor = true;
 			// 
-			// tabPage3
+			// tabTowers
 			// 
-			this.tabPage3.Location = new System.Drawing.Point(4, 22);
-			this.tabPage3.Name = "tabPage3";
-			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage3.Size = new System.Drawing.Size(243, 487);
-			this.tabPage3.TabIndex = 2;
-			this.tabPage3.Text = "tabPage3";
-			this.tabPage3.UseVisualStyleBackColor = true;
+			this.tabTowers.Location = new System.Drawing.Point(4, 22);
+			this.tabTowers.Name = "tabTowers";
+			this.tabTowers.Padding = new System.Windows.Forms.Padding(3);
+			this.tabTowers.Size = new System.Drawing.Size(243, 487);
+			this.tabTowers.TabIndex = 2;
+			this.tabTowers.Text = "Towers";
+			this.tabTowers.UseVisualStyleBackColor = true;
 			// 
-			// tabPage4
+			// tabScenery
 			// 
-			this.tabPage4.Location = new System.Drawing.Point(4, 22);
-			this.tabPage4.Name = "tabPage4";
-			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage4.Size = new System.Drawing.Size(243, 487);
-			this.tabPage4.TabIndex = 3;
-			this.tabPage4.Text = "tabPage4";
-			this.tabPage4.UseVisualStyleBackColor = true;
+			this.tabScenery.Location = new System.Drawing.Point(4, 22);
+			this.tabScenery.Name = "tabScenery";
+			this.tabScenery.Padding = new System.Windows.Forms.Padding(3);
+			this.tabScenery.Size = new System.Drawing.Size(243, 487);
+			this.tabScenery.TabIndex = 3;
+			this.tabScenery.Text = "Scenery";
+			this.tabScenery.UseVisualStyleBackColor = true;
 			// 
 			// LevelEditorForm1
 			// 
@@ -180,10 +180,10 @@
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
 		private System.Windows.Forms.PictureBox DemoPictureBox;
 		private System.Windows.Forms.TabControl tabTexture;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.TabPage tabPage3;
-		private System.Windows.Forms.TabPage tabPage4;
+		private System.Windows.Forms.TabPage tabTerrain;
+		private System.Windows.Forms.TabPage tabRoad;
+		private System.Windows.Forms.TabPage tabTowers;
+		private System.Windows.Forms.TabPage tabScenery;
 	}
 }
 
