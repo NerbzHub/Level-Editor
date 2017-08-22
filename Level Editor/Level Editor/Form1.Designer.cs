@@ -39,7 +39,6 @@
 			this.tabRoad = new System.Windows.Forms.TabPage();
 			this.tabTowers = new System.Windows.Forms.TabPage();
 			this.tabScenery = new System.Windows.Forms.TabPage();
-			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DemoPictureBox)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			this.tabTexture.SuspendLayout();
@@ -49,15 +48,15 @@
 			// 
 			this.panel1.BackColor = System.Drawing.SystemColors.Window;
 			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel1.Controls.Add(this.DemoPictureBox);
-			this.panel1.Location = new System.Drawing.Point(12, 46);
+			this.panel1.Location = new System.Drawing.Point(12, 30);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(791, 494);
+			this.panel1.Size = new System.Drawing.Size(960, 640);
 			this.panel1.TabIndex = 0;
+			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.paintMe);
 			// 
 			// DemoPictureBox
 			// 
-			this.DemoPictureBox.Location = new System.Drawing.Point(494, 163);
+			this.DemoPictureBox.Location = new System.Drawing.Point(1050, 574);
 			this.DemoPictureBox.Name = "DemoPictureBox";
 			this.DemoPictureBox.Size = new System.Drawing.Size(117, 78);
 			this.DemoPictureBox.TabIndex = 2;
@@ -69,7 +68,7 @@
             this.fileToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(1093, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -103,7 +102,7 @@
 			this.tabTexture.Controls.Add(this.tabRoad);
 			this.tabTexture.Controls.Add(this.tabTowers);
 			this.tabTexture.Controls.Add(this.tabScenery);
-			this.tabTexture.Location = new System.Drawing.Point(809, 27);
+			this.tabTexture.Location = new System.Drawing.Point(990, 30);
 			this.tabTexture.Name = "tabTexture";
 			this.tabTexture.SelectedIndex = 0;
 			this.tabTexture.Size = new System.Drawing.Size(251, 513);
@@ -153,7 +152,8 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1093, 633);
+			this.ClientSize = new System.Drawing.Size(1264, 682);
+			this.Controls.Add(this.DemoPictureBox);
 			this.Controls.Add(this.tabTexture);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.menuStrip1);
@@ -161,7 +161,6 @@
 			this.Name = "LevelEditorForm1";
 			this.Text = "Nathan\'s Level Editor";
 			this.Load += new System.EventHandler(this.LevelEditorForm1_Load);
-			this.panel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.DemoPictureBox)).EndInit();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
