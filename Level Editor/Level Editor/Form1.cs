@@ -70,6 +70,16 @@ namespace Level_Editor
 			System.Drawing.Graphics g = (sender as Panel).CreateGraphics();
 			System.Drawing.Pen pen1 = new System.Drawing.Pen(Color.Black, 2F);
 
+			// Renders the images into each 64x64 square
+			for (int i = 0; i < gridArray.GetLength(0); i++)
+			{
+				for (int j = 0; j < gridArray.GetLength(0); j++)
+				{
+					g.DrawImage(Properties.Resources.tex_Bloons_terrain_long_grass, (64 * i), (64 * j), 64, 64);
+					
+				}
+			}
+
 			//Draws the vertical of the grid
 			for (int i = 0; i < gridArray.GetLength(0); ++i)
 			{ 
@@ -80,6 +90,21 @@ namespace Level_Editor
 			for (int i = 0; i < gridArray.GetLength(0); ++i)
 			{
 				g.DrawLine(pen1, 0, (64 * i), mapLength, (64 * i));
+			}
+
+			
+		}
+
+		public void createGrid()
+		{
+			for (int i = 0; i < gridArray.GetLength(0); i++)
+			{
+				for (int j = 0; j < gridArray.GetLength(0); j++)
+				{
+					Graphics g = CreateGraphics();
+
+					g.DrawImage(Properties.Resources.tex_Bloons_terrain_long_grass, 0, 0, 64, 64);
+				}
 			}
 		}
 
