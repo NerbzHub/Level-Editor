@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.GridPanel = new System.Windows.Forms.Panel();
 			this.DemoPictureBox = new System.Windows.Forms.PictureBox();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,20 +39,27 @@
 			this.tabRoad = new System.Windows.Forms.TabPage();
 			this.tabTowers = new System.Windows.Forms.TabPage();
 			this.tabScenery = new System.Windows.Forms.TabPage();
+			this.pictureBoxTexture01 = new System.Windows.Forms.PictureBox();
+			this.pictureBoxTexture02 = new System.Windows.Forms.PictureBox();
+			this.pictureBoxTexture03 = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.DemoPictureBox)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			this.tabTexture.SuspendLayout();
+			this.tabTerrain.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture01)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture02)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture03)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// panel1
+			// GridPanel
 			// 
-			this.panel1.BackColor = System.Drawing.SystemColors.Window;
-			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panel1.Location = new System.Drawing.Point(12, 30);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(960, 640);
-			this.panel1.TabIndex = 0;
-			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.paintMe);
+			this.GridPanel.BackColor = System.Drawing.SystemColors.Window;
+			this.GridPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.GridPanel.Location = new System.Drawing.Point(12, 30);
+			this.GridPanel.Name = "GridPanel";
+			this.GridPanel.Size = new System.Drawing.Size(960, 640);
+			this.GridPanel.TabIndex = 0;
+			this.GridPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.paintMe);
 			// 
 			// DemoPictureBox
 			// 
@@ -110,6 +117,9 @@
 			// 
 			// tabTerrain
 			// 
+			this.tabTerrain.Controls.Add(this.pictureBoxTexture03);
+			this.tabTerrain.Controls.Add(this.pictureBoxTexture02);
+			this.tabTerrain.Controls.Add(this.pictureBoxTexture01);
 			this.tabTerrain.Location = new System.Drawing.Point(4, 22);
 			this.tabTerrain.Name = "tabTerrain";
 			this.tabTerrain.Padding = new System.Windows.Forms.Padding(3);
@@ -148,6 +158,34 @@
 			this.tabScenery.Text = "Scenery";
 			this.tabScenery.UseVisualStyleBackColor = true;
 			// 
+			// pictureBoxTexture01
+			// 
+			this.pictureBoxTexture01.Image = global::Level_Editor.Properties.Resources.tex_none_grey;
+			this.pictureBoxTexture01.Location = new System.Drawing.Point(6, 6);
+			this.pictureBoxTexture01.Name = "pictureBoxTexture01";
+			this.pictureBoxTexture01.Size = new System.Drawing.Size(64, 64);
+			this.pictureBoxTexture01.TabIndex = 0;
+			this.pictureBoxTexture01.TabStop = false;
+			// 
+			// pictureBoxTexture02
+			// 
+			this.pictureBoxTexture02.Image = global::Level_Editor.Properties.Resources.tex_Bloons_terrain_grass;
+			this.pictureBoxTexture02.Location = new System.Drawing.Point(88, 6);
+			this.pictureBoxTexture02.Name = "pictureBoxTexture02";
+			this.pictureBoxTexture02.Size = new System.Drawing.Size(64, 64);
+			this.pictureBoxTexture02.TabIndex = 1;
+			this.pictureBoxTexture02.TabStop = false;
+			this.pictureBoxTexture02.Click += new System.EventHandler(this.pictureBoxTexture02_Click);
+			// 
+			// pictureBoxTexture03
+			// 
+			this.pictureBoxTexture03.Image = global::Level_Editor.Properties.Resources.tex_Bloons_terrain_long_grass;
+			this.pictureBoxTexture03.Location = new System.Drawing.Point(173, 6);
+			this.pictureBoxTexture03.Name = "pictureBoxTexture03";
+			this.pictureBoxTexture03.Size = new System.Drawing.Size(64, 64);
+			this.pictureBoxTexture03.TabIndex = 2;
+			this.pictureBoxTexture03.TabStop = false;
+			// 
 			// LevelEditorForm1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,7 +193,7 @@
 			this.ClientSize = new System.Drawing.Size(1264, 682);
 			this.Controls.Add(this.DemoPictureBox);
 			this.Controls.Add(this.tabTexture);
-			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.GridPanel);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "LevelEditorForm1";
@@ -165,6 +203,10 @@
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.tabTexture.ResumeLayout(false);
+			this.tabTerrain.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture01)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture02)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture03)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -172,7 +214,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel GridPanel;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
@@ -183,6 +225,9 @@
 		private System.Windows.Forms.TabPage tabRoad;
 		private System.Windows.Forms.TabPage tabTowers;
 		private System.Windows.Forms.TabPage tabScenery;
+		private System.Windows.Forms.PictureBox pictureBoxTexture03;
+		private System.Windows.Forms.PictureBox pictureBoxTexture02;
+		private System.Windows.Forms.PictureBox pictureBoxTexture01;
 	}
 }
 

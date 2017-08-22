@@ -86,6 +86,7 @@
   <ItemGroup>
     <Content Include="Resources\tex_Bloons_terrain_grass.png" />
     <Content Include="Resources\tex_Bloons_terrain_long_grass.png" />
+    <None Include="Resources\tex_none_grey.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

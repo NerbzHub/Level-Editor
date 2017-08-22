@@ -11,8 +11,8 @@ using System.Windows.Forms;
 
 namespace Level_Editor
 {
-    public partial class LevelEditorForm1 : Form
-    {
+	public partial class LevelEditorForm1 : Form
+	{
 		private void MoveCursor()
 		{
 			// Set the Current cursor, move the cursor's Position,
@@ -22,13 +22,14 @@ namespace Level_Editor
 			Cursor.Position = new Point(Cursor.Position.X - 50, Cursor.Position.Y - 50);
 			Cursor.Clip = new Rectangle(Location, Size);
 		}
-		
-		
+
+
+		Bitmap[] img = new Bitmap[5];
 
 		//List<PictureBox> tileTexture = new List<PictureBox>();
 		enum TileType
 		{
-			ENUM_NONE, 
+			ENUM_NONE,
 			ENUM_GRASS,
 			ENUM_LONG_GRASS
 		}
@@ -54,7 +55,7 @@ namespace Level_Editor
 			{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE} ,
 		};
 
-		
+
 
 
 
@@ -63,7 +64,7 @@ namespace Level_Editor
 		//https://stackoverflow.com/questions/3884860/drawing-image-to-bigger-bitmap
 		int mapLength = 960;
 		int mapHeight = 640;
-		
+
 		
 		public void paintMe(object sender, PaintEventArgs e)
 		{
@@ -73,9 +74,9 @@ namespace Level_Editor
 			// Renders the images into each 64x64 square
 			for (int i = 0; i < gridArray.GetLength(0); i++)
 			{
-				for (int j = 0; j < gridArray.GetLength(0); j++)
+				for (int j = 0; j < gridArray.GetLength(1); j++)
 				{
-					g.DrawImage(Properties.Resources.tex_Bloons_terrain_long_grass, (64 * i), (64 * j), 64, 64);
+					g.DrawImage(img[(int)gridArray[i,j]], (64 * i), (64 * j), 64, 64);
 					
 				}
 			}
@@ -91,7 +92,6 @@ namespace Level_Editor
 			{
 				g.DrawLine(pen1, 0, (64 * i), mapLength, (64 * i));
 			}
-
 			
 		}
 
@@ -113,10 +113,12 @@ namespace Level_Editor
 			
 
 			InitializeComponent();
+			img[0] = new Bitmap(Properties.Resources.tex_none_grey);
+			img[1] = new Bitmap(Properties.Resources.tex_Bloons_terrain_grass);
+			img[2] = new Bitmap(Properties.Resources.tex_Bloons_terrain_long_grass);
 
 
-
-        }
+		}
 
 
 		private void LevelEditorForm1_Load(object sender, EventArgs e)
@@ -179,6 +181,11 @@ namespace Level_Editor
 			{
 				File.WriteAllText(save.FileName, "Hello World");
 			}
+		}
+
+		private void pictureBoxTexture02_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
