@@ -13,6 +13,18 @@ namespace Level_Editor
 {
     public partial class LevelEditorForm1 : Form
     {
+		private void MoveCursor()
+		{
+			// Set the Current cursor, move the cursor's Position,
+			// and set its clipping rectangle to the form. 
+
+			Cursor = new Cursor(Cursor.Current.Handle);
+			Cursor.Position = new Point(Cursor.Position.X - 50, Cursor.Position.Y - 50);
+			Cursor.Clip = new Rectangle(Location, Size);
+		}
+		
+		
+
 		//List<PictureBox> tileTexture = new List<PictureBox>();
 		enum TileType
 		{
@@ -32,30 +44,46 @@ namespace Level_Editor
 			{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE}
 		};
 
+		
+
+
+
+		// Make it so that the [0, 0] draws (0,0, 64,64) then [1,0] draws at (65,
+
 		//https://stackoverflow.com/questions/3884860/drawing-image-to-bigger-bitmap
 
 		Bitmap b = new Bitmap(500, 500);
 
+		
+
 		public LevelEditorForm1()
         {
             InitializeComponent();
+
+			for (int i = 0; i < 5; i++)
+			{
+				for (int j = 0; j < 5; j++)
+				{
+					gridArray[i,0]
+				}
+			}
         }
 
         private void LevelEditorForm1_Load(object sender, EventArgs e)
         {
 			//Example of one image
-            //PictureBox texGrass = new PictureBox();
-            //texGrass.Size = new Size(64, 64);
-            //texGrass.BackgroundImage = Properties.Resources.tex_Bloons_terrain_grass;
-            //PictureBox texLongGrass = new PictureBox();
-            //texLongGrass.Size = new Size(64, 64);
-            //texLongGrass.BackgroundImage = Properties.Resources.tex_Bloons_terrain_long_grass;
+			//PictureBox texGrass = new PictureBox();
+			//texGrass.Size = new Size(64, 64);
+			//texGrass.BackgroundImage = Properties.Resources.tex_Bloons_terrain_grass;
+			//PictureBox texLongGrass = new PictureBox();
+			//texLongGrass.Size = new Size(64, 64);
+			//texLongGrass.BackgroundImage = Properties.Resources.tex_Bloons_terrain_long_grass;
 			//End example
 
 			//texGrass.Location = new Point(50, 50);
 
 			//Controls.Add(texGrass);
-
+			palette.Add(TileType.ENUM_NONE, Properties.Resources.tex_Bloons_terrain_grass);
 			palette.Add(TileType.ENUM_GRASS, Properties.Resources.tex_Bloons_terrain_grass);
 			palette.Add(TileType.ENUM_LONG_GRASS, Properties.Resources.tex_Bloons_terrain_long_grass);
 
@@ -99,6 +127,11 @@ namespace Level_Editor
 			{
 				File.WriteAllText(save.FileName, "Hello World");
 			}
+		}
+
+		public int CalcGrid
+		{
+
 		}
 	}
 }

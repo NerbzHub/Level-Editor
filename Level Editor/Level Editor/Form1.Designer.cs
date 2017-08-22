@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.DemoPictureBox = new System.Windows.Forms.PictureBox();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.DemoPictureBox = new System.Windows.Forms.PictureBox();
 			this.tabTexture = new System.Windows.Forms.TabControl();
 			this.tabTerrain = new System.Windows.Forms.TabPage();
 			this.tabRoad = new System.Windows.Forms.TabPage();
 			this.tabTowers = new System.Windows.Forms.TabPage();
 			this.tabScenery = new System.Windows.Forms.TabPage();
 			this.panel1.SuspendLayout();
-			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.DemoPictureBox)).BeginInit();
+			this.menuStrip1.SuspendLayout();
 			this.tabTexture.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -54,6 +54,14 @@
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(791, 494);
 			this.panel1.TabIndex = 0;
+			// 
+			// DemoPictureBox
+			// 
+			this.DemoPictureBox.Location = new System.Drawing.Point(494, 163);
+			this.DemoPictureBox.Name = "DemoPictureBox";
+			this.DemoPictureBox.Size = new System.Drawing.Size(117, 78);
+			this.DemoPictureBox.TabIndex = 2;
+			this.DemoPictureBox.TabStop = false;
 			// 
 			// menuStrip1
 			// 
@@ -78,24 +86,16 @@
 			// saveToolStripMenuItem
 			// 
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
 			this.saveToolStripMenuItem.Text = "Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
 			// loadToolStripMenuItem
 			// 
 			this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-			this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
 			this.loadToolStripMenuItem.Text = "Load";
 			this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
-			// 
-			// DemoPictureBox
-			// 
-			this.DemoPictureBox.Location = new System.Drawing.Point(494, 163);
-			this.DemoPictureBox.Name = "DemoPictureBox";
-			this.DemoPictureBox.Size = new System.Drawing.Size(117, 78);
-			this.DemoPictureBox.TabIndex = 2;
-			this.DemoPictureBox.TabStop = false;
 			// 
 			// tabTexture
 			// 
@@ -162,9 +162,9 @@
 			this.Text = "Nathan\'s Level Editor";
 			this.Load += new System.EventHandler(this.LevelEditorForm1_Load);
 			this.panel1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.DemoPictureBox)).EndInit();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.DemoPictureBox)).EndInit();
 			this.tabTexture.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
