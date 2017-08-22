@@ -11,6 +11,12 @@ using System.Windows.Forms;
 
 namespace Level_Editor
 {
+	enum TileType
+	{
+		ENUM_NONE,
+		ENUM_GRASS,
+		ENUM_LONG_GRASS
+	}
 	public partial class LevelEditorForm1 : Form
 	{
 		private void MoveCursor()
@@ -23,16 +29,12 @@ namespace Level_Editor
 			Cursor.Clip = new Rectangle(Location, Size);
 		}
 
+		
 
 		Bitmap[] img = new Bitmap[5];
 
 		//List<PictureBox> tileTexture = new List<PictureBox>();
-		enum TileType
-		{
-			ENUM_NONE,
-			ENUM_GRASS,
-			ENUM_LONG_GRASS
-		}
+		
 
 		Dictionary<TileType, Bitmap> palette = new Dictionary<TileType, Bitmap>();
 
@@ -65,7 +67,12 @@ namespace Level_Editor
 		int mapLength = 960;
 		int mapHeight = 640;
 
-		
+		public void MouseLeftClick(object sender, MouseEventArgs e)
+		{
+			//Cursor.Position.X
+		}
+
+
 		public void paintMe(object sender, PaintEventArgs e)
 		{
 			System.Drawing.Graphics g = (sender as Panel).CreateGraphics();
@@ -137,16 +144,19 @@ namespace Level_Editor
 			//texGrass.Location = new Point(50, 50);
 
 			//Controls.Add(texGrass);
-			palette.Add(TileType.ENUM_NONE, Properties.Resources.tex_Bloons_terrain_grass);
-			palette.Add(TileType.ENUM_GRASS, Properties.Resources.tex_Bloons_terrain_grass);
-			palette.Add(TileType.ENUM_LONG_GRASS, Properties.Resources.tex_Bloons_terrain_long_grass);
+			//palette.Add(TileType.ENUM_NONE, Properties.Resources.tex_none_grey);
+			//palette.Add(TileType.ENUM_GRASS, Properties.Resources.tex_Bloons_terrain_grass);
+			//palette.Add(TileType.ENUM_LONG_GRASS, Properties.Resources.tex_Bloons_terrain_long_grass);
+			palette.Add(TileType.ENUM_NONE, img[0]);
+			palette.Add(TileType.ENUM_GRASS, img[1]);
+			palette.Add(TileType.ENUM_LONG_GRASS, img[2]);
 
-			
 
-            
 
-            //tileTexture.Add(texture);
-        }
+
+
+			//tileTexture.Add(texture);
+		}
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -184,6 +194,16 @@ namespace Level_Editor
 		}
 
 		private void pictureBoxTexture02_Click(object sender, EventArgs e)
+		{
+			//(sender as TileButton).myType;
+		}
+
+		private void pictureBoxTexture01_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void pictureBoxTexture03_Click(object sender, EventArgs e)
 		{
 
 		}
