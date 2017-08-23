@@ -43,6 +43,7 @@
 			this.pictureBoxTexture02 = new System.Windows.Forms.PictureBox();
 			this.pictureBoxTexture03 = new System.Windows.Forms.PictureBox();
 			this.tileButton1 = new Level_Editor.TileButton();
+			this.tileButton2 = new Level_Editor.TileButton();
 			((System.ComponentModel.ISupportInitialize)(this.DemoPictureBox)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			this.tabTexture.SuspendLayout();
@@ -51,6 +52,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture02)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture03)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.tileButton1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.tileButton2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// GridPanel
@@ -61,6 +63,7 @@
 			this.GridPanel.Name = "GridPanel";
 			this.GridPanel.Size = new System.Drawing.Size(960, 640);
 			this.GridPanel.TabIndex = 0;
+			this.GridPanel.Click += new System.EventHandler(this.GridPanel_Click);
 			this.GridPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.paintMe);
 			// 
 			// DemoPictureBox
@@ -119,6 +122,7 @@
 			// 
 			// tabTerrain
 			// 
+			this.tabTerrain.Controls.Add(this.tileButton2);
 			this.tabTerrain.Controls.Add(this.tileButton1);
 			this.tabTerrain.Controls.Add(this.DemoPictureBox);
 			this.tabTerrain.Location = new System.Drawing.Point(4, 22);
@@ -191,13 +195,22 @@
 			// 
 			// tileButton1
 			// 
-			this.tileButton1.Location = new System.Drawing.Point(92, 250);
+			this.tileButton1.Location = new System.Drawing.Point(6, 6);
 			this.tileButton1.myType = Level_Editor.TileType.ENUM_GRASS;
 			this.tileButton1.Name = "tileButton1";
 			this.tileButton1.Size = new System.Drawing.Size(64, 64);
 			this.tileButton1.TabIndex = 3;
 			this.tileButton1.TabStop = false;
 			this.tileButton1.Click += new System.EventHandler(this.tileButton1_Click);
+			// 
+			// tileButton2
+			// 
+			this.tileButton2.Location = new System.Drawing.Point(76, 6);
+			this.tileButton2.myType = Level_Editor.TileType.ENUM_GRASS;
+			this.tileButton2.Name = "tileButton2";
+			this.tileButton2.Size = new System.Drawing.Size(64, 64);
+			this.tileButton2.TabIndex = 4;
+			this.tileButton2.TabStop = false;
 			// 
 			// LevelEditorForm1
 			// 
@@ -223,6 +236,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture02)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture03)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.tileButton1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.tileButton2)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -245,6 +259,7 @@
 		private System.Windows.Forms.PictureBox pictureBoxTexture02;
 		private System.Windows.Forms.PictureBox pictureBoxTexture01;
 		private TileButton tileButton1;
+		private TileButton tileButton2;
 	}
 }
 

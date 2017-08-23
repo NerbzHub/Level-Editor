@@ -13,6 +13,11 @@ namespace Level_Editor
 		ENUM_GRASS,
 		ENUM_LONG_GRASS
 	}
+
+	enum TileTypeSwitcher
+	{
+		
+	}
 	class Palette
 	{
 		static public void CreatePalette()
@@ -25,8 +30,14 @@ namespace Level_Editor
 
 			//img = new Bitmap(Properties.Resources.tex_Bloons_terrain_long_grass);
 			palette.Add(TileType.ENUM_LONG_GRASS, Properties.Resources.tex_Bloons_terrain_long_grass);
+
+			//palette.Add(TileType.selectedTexture, Properties.Resources.tex_Bloons_terrain_long_grass);
+
+			
 		}
 
 		static public Dictionary<TileType, Bitmap> palette = new Dictionary<TileType, Bitmap>();
+
+		static public TileType selected;
 	}
 }

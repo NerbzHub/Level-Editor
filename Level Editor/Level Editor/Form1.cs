@@ -57,7 +57,9 @@ namespace Level_Editor
 		// Make it so that the [0, 0] draws (0,0, 64,64) then [1,0] draws at (65,
 
 		//https://stackoverflow.com/questions/3884860/drawing-image-to-bigger-bitmap
+		//960
 		int mapLength = 960;
+		//640
 		int mapHeight = 640;
 
 		public void MouseLeftClick(object sender, MouseEventArgs e)
@@ -95,18 +97,18 @@ namespace Level_Editor
 			
 		}
 
-		public void createGrid()
-		{
-			for (int i = 0; i < gridArray.GetLength(0); i++)
-			{
-				for (int j = 0; j < gridArray.GetLength(0); j++)
-				{
-					Graphics g = CreateGraphics();
+		//public void createGrid()
+		//{
+		//	for (int i = 0; i < gridArray.GetLength(0); i++)
+		//	{
+		//		for (int j = 0; j < gridArray.GetLength(0); j++)
+		//		{
+		//			Graphics g = CreateGraphics();
 
-					g.DrawImage(Properties.Resources.tex_Bloons_terrain_long_grass, 0, 0, 64, 64);
-				}
-			}
-		}
+		//			g.DrawImage(Properties.Resources.tex_Bloons_terrain_long_grass, 0, 0, 64, 64);
+		//		}
+		//	}
+		//}
 
 		public LevelEditorForm1()
         {
@@ -200,7 +202,30 @@ namespace Level_Editor
 
 		private void tileButton1_Click(object sender, EventArgs e)
 		{
+			//gridArray[0, 0] = TileType.ENUM_GRASS;
+			//TileType.selectedTexture = Proper;
+			Palette.selected = TileType.ENUM_GRASS;
+			Refresh();
+		}
 
+		private void GridPanel_Click(object sender, EventArgs e)
+		{
+			//TileType selectedTexture;
+			Point point = GridPanel.PointToClient(Cursor.Position);
+			//string mouseString;
+			//mouseString = Cursor.Position.X;
+			//float fTileX = float.Parse(mouseString);
+			int tileX = point.X;
+
+			//mouseString = Cursor.Position.Y.ToString();
+			//float fTileY = float.Parse(mouseString);
+			int tileY = point.Y;
+
+			tileX = tileX / 64;
+			tileY = tileY / 64;
+
+			gridArray[tileX, tileY] = Palette.selected;
+			Refresh();
 		}
 	}
 }

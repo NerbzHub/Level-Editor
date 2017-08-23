@@ -30,7 +30,12 @@ namespace Level_Editor
 			}
 		}
 
-		
+		private void OnClick(object sender, MouseEventArgs e)
+		{
+			
+		}
+
+
 		//Assign the img in the img[] array to the enum so that it displays the image.
 
 	}
