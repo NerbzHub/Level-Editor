@@ -11,12 +11,7 @@ using System.Windows.Forms;
 
 namespace Level_Editor
 {
-	enum TileType
-	{
-		ENUM_NONE,
-		ENUM_GRASS,
-		ENUM_LONG_GRASS
-	}
+	
 	public partial class LevelEditorForm1 : Form
 	{
 		private void MoveCursor()
@@ -29,14 +24,12 @@ namespace Level_Editor
 			Cursor.Clip = new Rectangle(Location, Size);
 		}
 
-		
-
-		Bitmap[] img = new Bitmap[5];
+		//Bitmap[] img = new Bitmap[5];
 
 		//List<PictureBox> tileTexture = new List<PictureBox>();
 		
 
-		Dictionary<TileType, Bitmap> palette = new Dictionary<TileType, Bitmap>();
+		
 
 		TileType[,] gridArray = new TileType[15, 10]
 		{
@@ -83,8 +76,8 @@ namespace Level_Editor
 			{
 				for (int j = 0; j < gridArray.GetLength(1); j++)
 				{
-					g.DrawImage(img[(int)gridArray[i,j]], (64 * i), (64 * j), 64, 64);
-					
+					//g.DrawImage(img[(int)gridArray[i,j]], (64 * i), (64 * j), 64, 64);
+					g.DrawImage(Palette.palette[gridArray[i, j]], (64 * i), (64 * j), 64, 64);
 				}
 			}
 
@@ -118,11 +111,9 @@ namespace Level_Editor
 		public LevelEditorForm1()
         {
 			
-
+			Palette.CreatePalette();
 			InitializeComponent();
-			img[0] = new Bitmap(Properties.Resources.tex_none_grey);
-			img[1] = new Bitmap(Properties.Resources.tex_Bloons_terrain_grass);
-			img[2] = new Bitmap(Properties.Resources.tex_Bloons_terrain_long_grass);
+			
 
 
 		}
@@ -147,9 +138,8 @@ namespace Level_Editor
 			//palette.Add(TileType.ENUM_NONE, Properties.Resources.tex_none_grey);
 			//palette.Add(TileType.ENUM_GRASS, Properties.Resources.tex_Bloons_terrain_grass);
 			//palette.Add(TileType.ENUM_LONG_GRASS, Properties.Resources.tex_Bloons_terrain_long_grass);
-			palette.Add(TileType.ENUM_NONE, img[0]);
-			palette.Add(TileType.ENUM_GRASS, img[1]);
-			palette.Add(TileType.ENUM_LONG_GRASS, img[2]);
+			
+			
 
 
 
@@ -204,6 +194,11 @@ namespace Level_Editor
 		}
 
 		private void pictureBoxTexture03_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void tileButton1_Click(object sender, EventArgs e)
 		{
 
 		}

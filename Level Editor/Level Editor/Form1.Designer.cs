@@ -119,6 +119,7 @@
 			// 
 			// tabTerrain
 			// 
+			this.tabTerrain.Controls.Add(this.tileButton1);
 			this.tabTerrain.Controls.Add(this.DemoPictureBox);
 			this.tabTerrain.Location = new System.Drawing.Point(4, 22);
 			this.tabTerrain.Name = "tabTerrain";
@@ -190,18 +191,19 @@
 			// 
 			// tileButton1
 			// 
-			this.tileButton1.Location = new System.Drawing.Point(1005, 637);
+			this.tileButton1.Location = new System.Drawing.Point(92, 250);
+			this.tileButton1.myType = Level_Editor.TileType.ENUM_GRASS;
 			this.tileButton1.Name = "tileButton1";
-			this.tileButton1.Size = new System.Drawing.Size(100, 50);
+			this.tileButton1.Size = new System.Drawing.Size(64, 64);
 			this.tileButton1.TabIndex = 3;
 			this.tileButton1.TabStop = false;
+			this.tileButton1.Click += new System.EventHandler(this.tileButton1_Click);
 			// 
 			// LevelEditorForm1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1264, 682);
-			this.Controls.Add(this.tileButton1);
 			this.Controls.Add(this.pictureBoxTexture03);
 			this.Controls.Add(this.pictureBoxTexture02);
 			this.Controls.Add(this.tabTexture);

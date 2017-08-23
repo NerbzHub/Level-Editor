@@ -13,9 +13,25 @@ namespace Level_Editor
 {
 	class TileButton : System.Windows.Forms.PictureBox
 	{
-		[Description("Test text displayed in the textbox"), Category("Data")]
-		public TileType myType { get; set; }
+		public TileType Value;
 
+		[Description("Test text displayed in the textbox"), Category("Data")]
+		public TileType myType
+		{
+			get
+			{
+				return Value;
+			}
+			set
+			{
+				if(!DesignMode)
+					Image = Palette.palette[value];
+				Value = value;
+			}
+		}
+
+		
+		//Assign the img in the img[] array to the enum so that it displays the image.
 
 	}
 }
