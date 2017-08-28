@@ -42,7 +42,6 @@
 			this.pictureBoxTexture01 = new System.Windows.Forms.PictureBox();
 			this.pictureBoxTexture02 = new System.Windows.Forms.PictureBox();
 			this.pictureBoxTexture03 = new System.Windows.Forms.PictureBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.tileButton3 = new Level_Editor.TileButton();
 			this.tileButton2 = new Level_Editor.TileButton();
 			this.tileButton1 = new Level_Editor.TileButton();
@@ -125,7 +124,6 @@
 			// 
 			// tabTerrain
 			// 
-			this.tabTerrain.Controls.Add(this.textBox1);
 			this.tabTerrain.Controls.Add(this.DemoPictureBox);
 			this.tabTerrain.Controls.Add(this.tileButton3);
 			this.tabTerrain.Controls.Add(this.tileButton2);
@@ -198,13 +196,6 @@
 			this.pictureBoxTexture03.TabStop = false;
 			this.pictureBoxTexture03.Click += new System.EventHandler(this.pictureBoxTexture03_Click);
 			// 
-			// textBox1
-			// 
-			this.textBox1.Location = new System.Drawing.Point(56, 171);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(100, 20);
-			this.textBox1.TabIndex = 6;
-			// 
 			// tileButton3
 			// 
 			this.tileButton3.Location = new System.Drawing.Point(161, 6);
@@ -257,7 +248,6 @@
 			this.menuStrip1.PerformLayout();
 			this.tabTexture.ResumeLayout(false);
 			this.tabTerrain.ResumeLayout(false);
-			this.tabTerrain.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture01)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture02)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture03)).EndInit();
@@ -288,7 +278,6 @@
 		private TileButton tileButton1;
 		private TileButton tileButton2;
 		private TileButton tileButton3;
-		private System.Windows.Forms.TextBox textBox1;
 	}
 }
 
