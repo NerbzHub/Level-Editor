@@ -185,8 +185,29 @@ namespace Level_Editor
 				//DemoPictureBox.Image = (Bitmap)Image.FromFile(open.FileName);
 
 				string text = System.IO.File.ReadAllText(open.FileName);
+				//This takes it in as a 1D string list. How do I change it to a 2D TileType list.
+				//List<string> allLinesText = File.ReadAllLines(text).ToList();
+
+
+				var lines = File.ReadAllLines(open.FileName);
+
+				//for (int i = 0; i < lines.Length; i++)
+				//{
+				//	var fields = lines[i];
+				//}
+				int lineNumber = 0;
+				for (int i = 0; i < gridArray.GetLength(1); i++)
+				{
+					for (int j = 0; j < gridArray.GetLength(0); j++)
+					{
+						gridArray[j, i] = (TileType)Enum.Parse(typeof(TileType), lines[lineNumber]);
+						++lineNumber;
+					}
+				}
+
+
 			}
-        }
+		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -201,7 +222,7 @@ namespace Level_Editor
 					for (int j = 0; j < gridArray.GetLength(0); j++)
 					{
 						text_line += gridArray[j, i].ToString();
-						text_line += ",";
+						text_line += "\n";
 					}
 				}
 
