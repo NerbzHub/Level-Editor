@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,16 @@ namespace Level_Editor
 	
 	public partial class LevelEditorForm1 : Form
 	{
+		protected override CreateParams CreateParams
+		{
+			get
+			{
+				CreateParams handleParam = base.CreateParams;
+				handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+				return handleParam;
+			}
+		}
+
 		private void MoveCursor()
 		{
 			// Set the Current cursor, move the cursor's Position,
@@ -115,9 +126,10 @@ namespace Level_Editor
 			
 			Palette.CreatePalette();
 			InitializeComponent();
-			
 
-
+			//typeof(Panel).InvokeMember("DoubleBuffered",
+			//	BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+			//	null, GridPanel, new object[] { true });
 		}
 
 
@@ -179,11 +191,49 @@ namespace Level_Editor
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			SaveFileDialog save = new SaveFileDialog();
+			save.Filter = "text file |*.txt";
 			if(save.ShowDialog() == DialogResult.OK)
 			{
-				File.WriteAllText(save.FileName, "Hello World");
+				string text_line = "";
+
+				for (int i = 0; i < gridArray.GetLength(1); i++)
+				{
+					for (int j = 0; j < gridArray.GetLength(0); j++)
+					{
+						text_line += gridArray[j, i].ToString();
+						text_line += ",";
+					}
+				}
+
+				File.WriteAllText(save.FileName, text_line);
 			}
+			//this is a potentially good tutorial, this function is unfinished though, ask richard.
+			// http://www.homeandlearn.co.uk/csharp/csharp_s11p3.html
+			//string file_name = "C:\\Users\\s171735\\Downloads\\test1.txt";
+			//string text_line = "";
+			//System.IO.StreamWriter objWriter;
+			
+			//objWriter = new System.IO.StreamWriter(file_name, true);
+
+			
+			//objWriter.Write(textBox1.Text);
+			
+			//objWriter.Close();
+
+			MessageBox.Show("File is written");
+
+
+			
 		}
+
+		private void tileButton1_MouseDown(object sender,
+		System.Windows.Forms.MouseEventArgs e)
+		{
+			tileButton1.DoDragDrop(tileButton1.Value, DragDropEffects.Copy |
+			   DragDropEffects.Move);
+		}
+
+
 
 		private void pictureBoxTexture02_Click(object sender, EventArgs e)
 		{
@@ -204,7 +254,9 @@ namespace Level_Editor
 		{
 			//gridArray[0, 0] = TileType.ENUM_GRASS;
 			//TileType.selectedTexture = Proper;
-			Palette.selected = TileType.ENUM_GRASS;
+			tileButton1.Select();
+			Palette.selected = TileType.ENUM_NONE;
+			Invalidate();
 			Refresh();
 		}
 
@@ -225,6 +277,22 @@ namespace Level_Editor
 			tileY = tileY / 64;
 
 			gridArray[tileX, tileY] = Palette.selected;
+			GridPanel.Invalidate();
+			GridPanel.Refresh();
+		}
+
+		private void tileButton2_Click(object sender, EventArgs e)
+		{
+			//this.FormBorderStyle
+			Palette.selected = TileType.ENUM_GRASS;
+			Invalidate();
+			Refresh();
+		}
+
+		private void tileButton3_Click(object sender, EventArgs e)
+		{
+			Palette.selected = TileType.ENUM_LONG_GRASS;
+			Invalidate();
 			Refresh();
 		}
 	}

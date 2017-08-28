@@ -42,8 +42,10 @@
 			this.pictureBoxTexture01 = new System.Windows.Forms.PictureBox();
 			this.pictureBoxTexture02 = new System.Windows.Forms.PictureBox();
 			this.pictureBoxTexture03 = new System.Windows.Forms.PictureBox();
-			this.tileButton1 = new Level_Editor.TileButton();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.tileButton3 = new Level_Editor.TileButton();
 			this.tileButton2 = new Level_Editor.TileButton();
+			this.tileButton1 = new Level_Editor.TileButton();
 			((System.ComponentModel.ISupportInitialize)(this.DemoPictureBox)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			this.tabTexture.SuspendLayout();
@@ -51,8 +53,9 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture01)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture02)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture03)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.tileButton1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.tileButton3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.tileButton2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.tileButton1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// GridPanel
@@ -68,7 +71,7 @@
 			// 
 			// DemoPictureBox
 			// 
-			this.DemoPictureBox.Location = new System.Drawing.Point(39, 388);
+			this.DemoPictureBox.Location = new System.Drawing.Point(56, 375);
 			this.DemoPictureBox.Name = "DemoPictureBox";
 			this.DemoPictureBox.Size = new System.Drawing.Size(117, 78);
 			this.DemoPictureBox.TabIndex = 2;
@@ -122,9 +125,11 @@
 			// 
 			// tabTerrain
 			// 
+			this.tabTerrain.Controls.Add(this.textBox1);
+			this.tabTerrain.Controls.Add(this.DemoPictureBox);
+			this.tabTerrain.Controls.Add(this.tileButton3);
 			this.tabTerrain.Controls.Add(this.tileButton2);
 			this.tabTerrain.Controls.Add(this.tileButton1);
-			this.tabTerrain.Controls.Add(this.DemoPictureBox);
 			this.tabTerrain.Location = new System.Drawing.Point(4, 22);
 			this.tabTerrain.Name = "tabTerrain";
 			this.tabTerrain.Padding = new System.Windows.Forms.Padding(3);
@@ -193,24 +198,44 @@
 			this.pictureBoxTexture03.TabStop = false;
 			this.pictureBoxTexture03.Click += new System.EventHandler(this.pictureBoxTexture03_Click);
 			// 
-			// tileButton1
+			// textBox1
 			// 
-			this.tileButton1.Location = new System.Drawing.Point(6, 6);
-			this.tileButton1.myType = Level_Editor.TileType.ENUM_GRASS;
-			this.tileButton1.Name = "tileButton1";
-			this.tileButton1.Size = new System.Drawing.Size(64, 64);
-			this.tileButton1.TabIndex = 3;
-			this.tileButton1.TabStop = false;
-			this.tileButton1.Click += new System.EventHandler(this.tileButton1_Click);
+			this.textBox1.Location = new System.Drawing.Point(56, 171);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(100, 20);
+			this.textBox1.TabIndex = 6;
+			// 
+			// tileButton3
+			// 
+			this.tileButton3.Location = new System.Drawing.Point(161, 6);
+			this.tileButton3.myType = Level_Editor.TileType.ENUM_LONG_GRASS;
+			this.tileButton3.Name = "tileButton3";
+			this.tileButton3.Size = new System.Drawing.Size(64, 64);
+			this.tileButton3.TabIndex = 5;
+			this.tileButton3.TabStop = false;
+			this.tileButton3.Click += new System.EventHandler(this.tileButton3_Click);
 			// 
 			// tileButton2
 			// 
-			this.tileButton2.Location = new System.Drawing.Point(76, 6);
+			this.tileButton2.Location = new System.Drawing.Point(91, 6);
 			this.tileButton2.myType = Level_Editor.TileType.ENUM_GRASS;
 			this.tileButton2.Name = "tileButton2";
 			this.tileButton2.Size = new System.Drawing.Size(64, 64);
 			this.tileButton2.TabIndex = 4;
 			this.tileButton2.TabStop = false;
+			this.tileButton2.Click += new System.EventHandler(this.tileButton2_Click);
+			// 
+			// tileButton1
+			// 
+			this.tileButton1.BackColor = System.Drawing.Color.Transparent;
+			this.tileButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.tileButton1.Location = new System.Drawing.Point(21, 6);
+			this.tileButton1.myType = Level_Editor.TileType.ENUM_NONE;
+			this.tileButton1.Name = "tileButton1";
+			this.tileButton1.Size = new System.Drawing.Size(64, 64);
+			this.tileButton1.TabIndex = 3;
+			this.tileButton1.TabStop = false;
+			this.tileButton1.Click += new System.EventHandler(this.tileButton1_Click);
 			// 
 			// LevelEditorForm1
 			// 
@@ -232,11 +257,13 @@
 			this.menuStrip1.PerformLayout();
 			this.tabTexture.ResumeLayout(false);
 			this.tabTerrain.ResumeLayout(false);
+			this.tabTerrain.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture01)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture02)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture03)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.tileButton1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.tileButton3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.tileButton2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.tileButton1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -260,6 +287,8 @@
 		private System.Windows.Forms.PictureBox pictureBoxTexture01;
 		private TileButton tileButton1;
 		private TileButton tileButton2;
+		private TileButton tileButton3;
+		private System.Windows.Forms.TextBox textBox1;
 	}
 }
 
