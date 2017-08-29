@@ -13,10 +13,10 @@ namespace Level_Editor
 {
 	class TileButton : System.Windows.Forms.PictureBox
 	{
-		public TileType Value;
+		public int Value;
 
 		[Description("Test text displayed in the textbox"), Category("Data")]
-		public TileType myType
+		public int myType
 		{
 			get
 			{
