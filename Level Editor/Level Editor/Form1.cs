@@ -137,33 +137,49 @@ namespace Level_Editor
 		//		}
 		//	}
 		//}
-		static public void CreatePalette()
+		public void CreatePalette()
 		{
 			CreateDictionary(Properties.Resources.tex_none_grey);
 			CreateDictionary(Properties.Resources.tex_Bloons_terrain_grass);
 			CreateDictionary(Properties.Resources.tex_Bloons_terrain_long_grass);
 		}
 
-		List<TileButton> tileList;
+		List<TileButton> tileList = new List<TileButton>();
 
-		static public void CreateDictionary(Bitmap bitmap)
+		public void CreateDictionary(Bitmap bitmap)
 		{
 			//Figure out how to add a new enum to tiletype. The problem at the moment is the new tiletype is just set to enum none. I need to create a new enum & add it in the palette
+
 			int newDictionary = Palette.palette.Count;
 			Palette.palette.Add(newDictionary, bitmap);
 
 			TileButton tile = new TileButton();
-			//add to list
-			//tile.Location = new Location(4, 7);
-			//tile.Parent = tabTexture;
-			//tile.myType = newDictionary;
+			tileList.Add(tile);//add to list
+
+			// What do I use for location?
+
+			tile.Parent = tabTerrain;
+			tile.BackColor = Color.Black;
+			tile.myType = newDictionary;
+
+			int x = ((tileList.Count - 1) % 3) * 66;
+
+			int y = ((tileList.Count - 1) / 3) * 66;
+
+			tile.Location = new Point(x, y);
+			tile.Width = 64;
+			tile.Height = 64;
+			tile.BringToFront();
+			tile.Click += tileButton1_Click;
+			tile.SizeMode = PictureBoxSizeMode.StretchImage;
+			//tile.Show();
 		}
 
 		public LevelEditorForm1()
         {
 			
-			CreatePalette();
 			InitializeComponent();
+			CreatePalette();
 
 
 
@@ -192,13 +208,7 @@ namespace Level_Editor
 			//palette.Add(TileType.ENUM_NONE, Properties.Resources.tex_none_grey);
 			//palette.Add(TileType.ENUM_GRASS, Properties.Resources.tex_Bloons_terrain_grass);
 			//palette.Add(TileType.ENUM_LONG_GRASS, Properties.Resources.tex_Bloons_terrain_long_grass);
-			
-			
-
-
-
-
-
+		
 			//tileTexture.Add(texture);
 		}
 
@@ -291,8 +301,8 @@ namespace Level_Editor
 		private void tileButton1_MouseDown(object sender,
 		System.Windows.Forms.MouseEventArgs e)
 		{
-			tileButton1.DoDragDrop(tileButton1.Value, DragDropEffects.Copy |
-			   DragDropEffects.Move);
+			//tileButton1.DoDragDrop(tileButton1.Value, DragDropEffects.Copy |
+			//   DragDropEffects.Move);
 		}
 
 
@@ -316,8 +326,8 @@ namespace Level_Editor
 		{
 			//gridArray[0, 0] = TileType.ENUM_GRASS;
 			//TileType.selectedTexture = Proper;
-			tileButton1.Select();
-			Palette.selected = 0;
+			((TileButton)sender).Select();
+			Palette.selected = ((TileButton)sender).myType;
 			Invalidate();
 			Refresh();
 		}

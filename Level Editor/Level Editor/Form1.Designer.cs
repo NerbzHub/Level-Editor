@@ -40,18 +40,10 @@
 			this.tabTowers = new System.Windows.Forms.TabPage();
 			this.tabScenery = new System.Windows.Forms.TabPage();
 			this.buttonImport = new System.Windows.Forms.Button();
-			this.tileButton4 = new Level_Editor.TileButton();
-			this.tileButton3 = new Level_Editor.TileButton();
-			this.tileButton2 = new Level_Editor.TileButton();
-			this.tileButton1 = new Level_Editor.TileButton();
 			((System.ComponentModel.ISupportInitialize)(this.DemoPictureBox)).BeginInit();
 			this.menuStrip1.SuspendLayout();
 			this.tabTexture.SuspendLayout();
 			this.tabTerrain.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.tileButton4)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.tileButton3)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.tileButton2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.tileButton1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// GridPanel
@@ -121,11 +113,7 @@
 			// 
 			// tabTerrain
 			// 
-			this.tabTerrain.Controls.Add(this.tileButton4);
 			this.tabTerrain.Controls.Add(this.DemoPictureBox);
-			this.tabTerrain.Controls.Add(this.tileButton3);
-			this.tabTerrain.Controls.Add(this.tileButton2);
-			this.tabTerrain.Controls.Add(this.tileButton1);
 			this.tabTerrain.Location = new System.Drawing.Point(4, 22);
 			this.tabTerrain.Name = "tabTerrain";
 			this.tabTerrain.Padding = new System.Windows.Forms.Padding(3);
@@ -174,47 +162,6 @@
 			this.buttonImport.UseVisualStyleBackColor = true;
 			this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
 			// 
-			// tileButton4
-			// 
-			this.tileButton4.Location = new System.Drawing.Point(21, 76);
-			this.tileButton4.myType = 0;
-			this.tileButton4.Name = "tileButton4";
-			this.tileButton4.Size = new System.Drawing.Size(64, 64);
-			this.tileButton4.TabIndex = 6;
-			this.tileButton4.TabStop = false;
-			// 
-			// tileButton3
-			// 
-			this.tileButton3.Location = new System.Drawing.Point(161, 6);
-			this.tileButton3.myType = 2;
-			this.tileButton3.Name = "tileButton3";
-			this.tileButton3.Size = new System.Drawing.Size(64, 64);
-			this.tileButton3.TabIndex = 5;
-			this.tileButton3.TabStop = false;
-			this.tileButton3.Click += new System.EventHandler(this.tileButton3_Click);
-			// 
-			// tileButton2
-			// 
-			this.tileButton2.Location = new System.Drawing.Point(91, 6);
-			this.tileButton2.myType = 1;
-			this.tileButton2.Name = "tileButton2";
-			this.tileButton2.Size = new System.Drawing.Size(64, 64);
-			this.tileButton2.TabIndex = 4;
-			this.tileButton2.TabStop = false;
-			this.tileButton2.Click += new System.EventHandler(this.tileButton2_Click);
-			// 
-			// tileButton1
-			// 
-			this.tileButton1.BackColor = System.Drawing.Color.Transparent;
-			this.tileButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.tileButton1.Location = new System.Drawing.Point(21, 6);
-			this.tileButton1.myType = 0;
-			this.tileButton1.Name = "tileButton1";
-			this.tileButton1.Size = new System.Drawing.Size(64, 64);
-			this.tileButton1.TabIndex = 3;
-			this.tileButton1.TabStop = false;
-			this.tileButton1.Click += new System.EventHandler(this.tileButton1_Click);
-			// 
 			// LevelEditorForm1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,10 +180,6 @@
 			this.menuStrip1.PerformLayout();
 			this.tabTexture.ResumeLayout(false);
 			this.tabTerrain.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.tileButton4)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.tileButton3)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.tileButton2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.tileButton1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -255,10 +198,6 @@
 		private System.Windows.Forms.TabPage tabRoad;
 		private System.Windows.Forms.TabPage tabTowers;
 		private System.Windows.Forms.TabPage tabScenery;
-		private TileButton tileButton1;
-		private TileButton tileButton2;
-		private TileButton tileButton3;
-		private TileButton tileButton4;
 		private System.Windows.Forms.Button buttonImport;
 	}
 }
