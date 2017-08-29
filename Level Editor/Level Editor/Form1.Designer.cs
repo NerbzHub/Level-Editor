@@ -39,9 +39,6 @@
 			this.tabRoad = new System.Windows.Forms.TabPage();
 			this.tabTowers = new System.Windows.Forms.TabPage();
 			this.tabScenery = new System.Windows.Forms.TabPage();
-			this.pictureBoxTexture01 = new System.Windows.Forms.PictureBox();
-			this.pictureBoxTexture02 = new System.Windows.Forms.PictureBox();
-			this.pictureBoxTexture03 = new System.Windows.Forms.PictureBox();
 			this.buttonImport = new System.Windows.Forms.Button();
 			this.tileButton4 = new Level_Editor.TileButton();
 			this.tileButton3 = new Level_Editor.TileButton();
@@ -51,9 +48,6 @@
 			this.menuStrip1.SuspendLayout();
 			this.tabTexture.SuspendLayout();
 			this.tabTerrain.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture01)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture02)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture03)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.tileButton4)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.tileButton3)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.tileButton2)).BeginInit();
@@ -170,36 +164,6 @@
 			this.tabScenery.Text = "Scenery";
 			this.tabScenery.UseVisualStyleBackColor = true;
 			// 
-			// pictureBoxTexture01
-			// 
-			this.pictureBoxTexture01.Image = global::Level_Editor.Properties.Resources.tex_none_grey;
-			this.pictureBoxTexture01.Location = new System.Drawing.Point(1050, 549);
-			this.pictureBoxTexture01.Name = "pictureBoxTexture01";
-			this.pictureBoxTexture01.Size = new System.Drawing.Size(64, 64);
-			this.pictureBoxTexture01.TabIndex = 0;
-			this.pictureBoxTexture01.TabStop = false;
-			this.pictureBoxTexture01.Click += new System.EventHandler(this.pictureBoxTexture01_Click);
-			// 
-			// pictureBoxTexture02
-			// 
-			this.pictureBoxTexture02.Image = global::Level_Editor.Properties.Resources.tex_Bloons_terrain_grass;
-			this.pictureBoxTexture02.Location = new System.Drawing.Point(980, 549);
-			this.pictureBoxTexture02.Name = "pictureBoxTexture02";
-			this.pictureBoxTexture02.Size = new System.Drawing.Size(64, 64);
-			this.pictureBoxTexture02.TabIndex = 1;
-			this.pictureBoxTexture02.TabStop = false;
-			this.pictureBoxTexture02.Click += new System.EventHandler(this.pictureBoxTexture02_Click);
-			// 
-			// pictureBoxTexture03
-			// 
-			this.pictureBoxTexture03.Image = global::Level_Editor.Properties.Resources.tex_Bloons_terrain_long_grass;
-			this.pictureBoxTexture03.Location = new System.Drawing.Point(1120, 549);
-			this.pictureBoxTexture03.Name = "pictureBoxTexture03";
-			this.pictureBoxTexture03.Size = new System.Drawing.Size(64, 64);
-			this.pictureBoxTexture03.TabIndex = 2;
-			this.pictureBoxTexture03.TabStop = false;
-			this.pictureBoxTexture03.Click += new System.EventHandler(this.pictureBoxTexture03_Click);
-			// 
 			// buttonImport
 			// 
 			this.buttonImport.Location = new System.Drawing.Point(994, 629);
@@ -257,10 +221,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1264, 682);
 			this.Controls.Add(this.buttonImport);
-			this.Controls.Add(this.pictureBoxTexture03);
-			this.Controls.Add(this.pictureBoxTexture02);
 			this.Controls.Add(this.tabTexture);
-			this.Controls.Add(this.pictureBoxTexture01);
 			this.Controls.Add(this.GridPanel);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
@@ -272,9 +233,6 @@
 			this.menuStrip1.PerformLayout();
 			this.tabTexture.ResumeLayout(false);
 			this.tabTerrain.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture01)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture02)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxTexture03)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.tileButton4)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.tileButton3)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.tileButton2)).EndInit();
@@ -297,9 +255,6 @@
 		private System.Windows.Forms.TabPage tabRoad;
 		private System.Windows.Forms.TabPage tabTowers;
 		private System.Windows.Forms.TabPage tabScenery;
-		private System.Windows.Forms.PictureBox pictureBoxTexture03;
-		private System.Windows.Forms.PictureBox pictureBoxTexture02;
-		private System.Windows.Forms.PictureBox pictureBoxTexture01;
 		private TileButton tileButton1;
 		private TileButton tileButton2;
 		private TileButton tileButton3;

@@ -42,7 +42,7 @@ namespace Level_Editor
 
 		static public int selected;
 
-		//List<TileButton> tileList;
+		
 
 		//static public void CreateDictionary(Bitmap bitmap)
 		//{
