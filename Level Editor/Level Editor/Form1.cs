@@ -137,12 +137,33 @@ namespace Level_Editor
 		//		}
 		//	}
 		//}
+		static public void CreatePalette()
+		{
+			CreateDictionary(Properties.Resources.tex_none_grey);
+			CreateDictionary(Properties.Resources.tex_Bloons_terrain_grass);
+			CreateDictionary(Properties.Resources.tex_Bloons_terrain_long_grass);
+		}
+
+		static public void CreateDictionary(Bitmap bitmap)
+		{
+			//Figure out how to add a new enum to tiletype. The problem at the moment is the new tiletype is just set to enum none. I need to create a new enum & add it in the palette
+			int newDictionary = Palette.palette.Count;
+			Palette.palette.Add(newDictionary, bitmap);
+
+			TileButton tile = new TileButton();
+			//add to list
+			//tile.Location = new location(x, y);
+			//tile.Parent = tabPanel;
+			tile.myType = newDictionary;
+		}
 
 		public LevelEditorForm1()
         {
 			
-			Palette.CreatePalette();
+			CreatePalette();
 			InitializeComponent();
+
+
 
 			//typeof(Panel).InvokeMember("DoubleBuffered",
 			//	BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
@@ -352,7 +373,7 @@ namespace Level_Editor
 				Bitmap image = (Bitmap)Image.FromFile(open.FileName);
 				//DemoPictureBox.Image = (Bitmap)Image.FromFile(open.FileName);
 
-				Palette.CreateDictionary(image);
+				CreateDictionary(image);
 				// I need to add the image to an empty picturebox.
 				// Then I need to add a new enum,
 				// Then add a new dictionary add to add the new image to the new enum.
