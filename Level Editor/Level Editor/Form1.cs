@@ -395,8 +395,47 @@ namespace Level_Editor
 
 			}
 		}
-	}
+
+        private void GridPanel_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+        }
+
+        private void GridPanel_DragDrop(object sender, DragEventArgs e)
+        {
+            //Save
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+
+            string strFiles = String.Join(" ", files);
+
+            Bitmap image = (Bitmap)Image.FromFile(strFiles);
+
+            CreateDictionary(image);
+            //foreach (string file in files)
+                  //MessageBox.Show(file);
+                  
+        }
+    }
 }
+
+//Make not walkable bool that will show a little red x ontop of tiles.
+
+//marking collision
+
+//Undo and redo 
+
+    //create a struct / class
+    // take in the values of the last tile and when they click on a new one it adds the most recent tile value to a list. Undo changes it back then redo changes it back.
+
+
+//save the file path into a file so that it can find what the picture was.
+
+
+
+
+
+
+
 
 //https://www.youtube.com/watch?v=lk0GsyxCj-U&index=1&list=PL0A864073DA96A7DA - this is the tutorial in xna
 //Bitmap Blitting
