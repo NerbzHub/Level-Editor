@@ -332,8 +332,31 @@ namespace Level_Editor
 			Refresh();
 		}
 
-		private void GridPanel_Click(object sender, EventArgs e)
+        private void SaveToTxt()
+        {
+            //Gets the application's path in a string
+            string appPath = Path.GetDirectoryName(Application.ExecutablePath);
+            string path = "C:\\Users";
+            string text_line = "";
+
+            for (int i = 0; i < gridArray.GetLength(1); i++)
+            {
+                for (int j = 0; j < gridArray.GetLength(0); j++)
+                {
+                    text_line += gridArray[j, i].ToString();
+                    text_line += "\n";
+                }
+            }
+
+            File.WriteAllText(path, text_line);
+
+            //Make sure that the temp files get cleaned up after the application is closed.
+        }
+
+		public void GridPanel_Click(object sender, EventArgs e)
 		{
+            SaveToTxt();
+
 			//TileType selectedTexture;
 			Point point = GridPanel.PointToClient(Cursor.Position);
 			//string mouseString;
@@ -412,9 +435,46 @@ namespace Level_Editor
 
             CreateDictionary(image);
             //foreach (string file in files)
-                  //MessageBox.Show(file);
+            //MessageBox.Show(file);
+
+            Refresh();
                   
         }
+
+        public void Undo()
+        {
+            //Export the old one to tempRedo.txt
+
+
+            //load in the tempUndo.txt
+
+        }
+    }
+
+    class UndoRedo
+    {
+        //I could create a new dictionary that will hold the point and the image that was selected at the time. 
+        //This would mean that I can just call from the dictionary and it will place it in the normal dictionary.
+
+        //There is a way that I might be able to store it in the same dictionary. The issue with this would be if it creates another one in the list, it might stuff up the
+        //save file because it might have the undo numbers instead of the normal ones which is bad.
+        
+        //There is probably also a way to just take the last one that got placed from the list. This could just be stored in an int.
+
+        //Create a log that contains all of the points and images that have been used. 
+
+
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //Create a temp.txt that holds the last drawn array and when undo is pressed, revert it back to that. When undo is pressed, it also changes the temp to the array, pre-undo.
+        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+        //These values are to temporarily hold the point incase the user decides to undo. It will hold the most recent point click
+        int tempX; //tempX is the pointX created by GridPanel_Click function
+        int tempY; //tempY is the pointY created by GridPanel_Click function
+
+
+
     }
 }
 
