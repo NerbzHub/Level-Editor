@@ -15,6 +15,9 @@ namespace Level_Editor
 	
 	public partial class LevelEditorForm1 : Form
 	{
+
+        List<UndoRedo> actionLog = new List<UndoRedo>();
+
 		protected override CreateParams CreateParams
 		{
 			get
@@ -335,7 +338,8 @@ namespace Level_Editor
         private void SaveToTxt()
         {
             //Gets the application's path in a string
-            string appPath = Path.GetDirectoryName(Application.ExecutablePath);
+            //Path.GetDirectoryName(Application.ExecutablePath).Replace(@"bin\debug\", string.Empty);
+
             string path = "C:\\Users";
             string text_line = "";
 
@@ -348,14 +352,17 @@ namespace Level_Editor
                 }
             }
 
-            File.WriteAllText(path, text_line);
+            //Trying to gain access to denied acces files in the project directory.
+
+            File.SetAttributes(Path.GetDirectoryName(Application.ExecutablePath), FileAttributes.Normal);
+            File.WriteAllText(Path.GetDirectoryName(Application.ExecutablePath), text_line);
 
             //Make sure that the temp files get cleaned up after the application is closed.
         }
 
 		public void GridPanel_Click(object sender, EventArgs e)
 		{
-            SaveToTxt();
+           // SaveToTxt();
 
 			//TileType selectedTexture;
 			Point point = GridPanel.PointToClient(Cursor.Position);
@@ -371,7 +378,18 @@ namespace Level_Editor
 			tileX = tileX / 64;
 			tileY = tileY / 64;
 
-			gridArray[tileX, tileY] = Palette.selected;
+            UndoRedo undoRedo = new UndoRedo();
+
+            undoRedo.tempX = tileX;
+            undoRedo.tempY = tileY;
+            undoRedo.PreviousTile = gridArray[tileX, tileY];
+            undoRedo.NextTile = Palette.selected;
+
+            actionLog.Add(undoRedo);
+            
+    
+
+            gridArray[tileX, tileY] = Palette.selected;
 			GridPanel.Invalidate();
 			GridPanel.Refresh();
 		}
@@ -449,9 +467,23 @@ namespace Level_Editor
             //load in the tempUndo.txt
 
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.Z))
+            { 
+            int index = actionLog.Count - 1;
+
+                gridArray[actionLog[index].tempX, actionLog[index].tempY] = actionLog[index].PreviousTile;
+
+                Refresh();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
     }
 
-    class UndoRedo
+    public class UndoRedo
     {
         //I could create a new dictionary that will hold the point and the image that was selected at the time. 
         //This would mean that I can just call from the dictionary and it will place it in the normal dictionary.
@@ -470,9 +502,10 @@ namespace Level_Editor
 
 
         //These values are to temporarily hold the point incase the user decides to undo. It will hold the most recent point click
-        int tempX; //tempX is the pointX created by GridPanel_Click function
-        int tempY; //tempY is the pointY created by GridPanel_Click function
-
+        public int tempX = 0; //tempX is the pointX created by GridPanel_Click function
+        public int tempY = 0; //tempY is the pointY created by GridPanel_Click function
+        public int PreviousTile = 0;
+        public int NextTile = 0;
 
 
     }
