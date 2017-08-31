@@ -19,6 +19,11 @@ namespace Level_Editor
         List<UndoRedo> undoLog = new List<UndoRedo>();
 
         List<UndoRedo> redoLog = new List<UndoRedo>();
+
+        //Everytime i add an image to the palette, it adds the name to the list.
+        List<string> imageLog = new List<string>();
+
+
         protected override CreateParams CreateParams
 		{
 			get
@@ -154,6 +159,7 @@ namespace Level_Editor
 		{
 			//Figure out how to add a new enum to tiletype. The problem at the moment is the new tiletype is just set to enum none. I need to create a new enum & add it in the palette
 
+
 			int newDictionary = Palette.palette.Count;
 			Palette.palette.Add(newDictionary, bitmap);
 
@@ -245,11 +251,28 @@ namespace Level_Editor
 
 				var lines = File.ReadAllLines(open.FileName);
 
-				//for (int i = 0; i < lines.Length; i++)
-				//{
-				//	var fields = lines[i];
-				//}
-				int lineNumber = 0;
+                //for (int i = 0; i < lines.Length; i++)
+                //{
+                //	var fields = lines[i];
+                //}
+                string[] palettePath = lines[0].Split(',');
+
+                
+                for (int i = 0; i < palettePath.Length; i++)
+                {
+
+                    if (palettePath[i] == "")
+                        continue;
+                    
+                    //From here I need to get the values back into the palette
+                    //Unless I can export the palette too. 
+                    Bitmap image = (Bitmap)Image.FromFile(palettePath[i]);
+                    imageLog.Add(palettePath[i]);
+                    CreateDictionary(image);
+
+                }
+
+				int lineNumber = 1;
 				for (int i = 0; i < gridArray.GetLength(1); i++)
 				{
 					for (int j = 0; j < gridArray.GetLength(0); j++)
@@ -260,8 +283,10 @@ namespace Level_Editor
 					}
 				}
 
+                
 
-			}
+
+            }
 
             Refresh();
 		}
@@ -274,12 +299,31 @@ namespace Level_Editor
 			{
 				string text_line = "";
 
-				for (int i = 0; i < gridArray.GetLength(1); i++)
+                //Write line 0 
+                //Write it as location comma location comma
+                //Read it in as split strings. From there it'd load in each one.
+                // Look at the load for loop with the lines[linenumber] and the line number is 0. This means it will only go through the written line.
+
+                //text_line = 
+
+
+
+                for (int i = 0; i < imageLog.Count; i++)
+                {
+
+                    text_line += imageLog[i].ToString();
+                    text_line += ",";
+
+                    //string[] parts = text_line.Split(',');
+                }
+
+                for (int i = 0; i < gridArray.GetLength(1); i++)
 				{
 					for (int j = 0; j < gridArray.GetLength(0); j++)
 					{
+                        text_line += "\n";
 						text_line += gridArray[j, i].ToString();
-						text_line += "\n";
+						
 					}
 				}
 
@@ -342,8 +386,7 @@ namespace Level_Editor
         {
             //Gets the application's path in a string
             //Path.GetDirectoryName(Application.ExecutablePath).Replace(@"bin\debug\", string.Empty);
-
-            string path = "C:\\Users";
+            
             string text_line = "";
 
             for (int i = 0; i < gridArray.GetLength(1); i++)
@@ -365,8 +408,8 @@ namespace Level_Editor
 
 		public void GridPanel_Click(object sender, EventArgs e)
 		{
-           // SaveToTxt();
-
+            // SaveToTxt();
+            redoLog.Clear();
 			//TileType selectedTexture;
 			Point point = GridPanel.PointToClient(Cursor.Position);
 			//string mouseString;
@@ -427,6 +470,8 @@ namespace Level_Editor
 			if (open.ShowDialog() == DialogResult.OK)
 			{
 				Bitmap image = (Bitmap)Image.FromFile(open.FileName);
+
+                imageLog.Add(open.FileName);
 				//DemoPictureBox.Image = (Bitmap)Image.FromFile(open.FileName);
 
 				CreateDictionary(image);
@@ -452,12 +497,14 @@ namespace Level_Editor
 
             string strFiles = String.Join(" ", files);
 
+            imageLog.Add(strFiles);
+
             Bitmap image = (Bitmap)Image.FromFile(strFiles);
 
             CreateDictionary(image);
             //foreach (string file in files)
             //MessageBox.Show(file);
-
+            Invalidate();
             Refresh();
                   
         }
