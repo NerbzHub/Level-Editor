@@ -261,6 +261,7 @@ namespace Level_Editor
 
 
 			}
+            Refresh();
 		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -479,6 +480,16 @@ namespace Level_Editor
                 Refresh();
                 return true;
             }
+
+            if (keyData == (Keys.Control | Keys.Y))
+            {
+                int index = actionLog.Count - 1;
+
+                gridArray[actionLog[index].tempX, actionLog[index].tempY] = actionLog[index].NextTile;
+
+                Refresh();
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
     }
@@ -499,6 +510,10 @@ namespace Level_Editor
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //Create a temp.txt that holds the last drawn array and when undo is pressed, revert it back to that. When undo is pressed, it also changes the temp to the array, pre-undo.
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+            //Make a list of lists
 
 
         //These values are to temporarily hold the point incase the user decides to undo. It will hold the most recent point click
