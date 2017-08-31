@@ -261,6 +261,7 @@ namespace Level_Editor
 
 
 			}
+
             Refresh();
 		}
 
