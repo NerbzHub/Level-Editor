@@ -16,9 +16,10 @@ namespace Level_Editor
 	public partial class LevelEditorForm1 : Form
 	{
 
-        List<UndoRedo> actionLog = new List<UndoRedo>();
+        List<UndoRedo> undoLog = new List<UndoRedo>();
 
-		protected override CreateParams CreateParams
+        List<UndoRedo> redoLog = new List<UndoRedo>();
+        protected override CreateParams CreateParams
 		{
 			get
 			{
@@ -387,7 +388,7 @@ namespace Level_Editor
             undoRedo.PreviousTile = gridArray[tileX, tileY];
             undoRedo.NextTile = Palette.selected;
 
-            actionLog.Add(undoRedo);
+            undoLog.Add(undoRedo);
             
     
 
@@ -474,9 +475,18 @@ namespace Level_Editor
         {
             if (keyData == (Keys.Control | Keys.Z))
             { 
-            int index = actionLog.Count - 1;
 
-                gridArray[actionLog[index].tempX, actionLog[index].tempY] = actionLog[index].PreviousTile;
+            int index = undoLog.Count - 1;
+
+                if (index < 0)
+                    return false;
+                gridArray[undoLog[index].tempX, undoLog[index].tempY] = undoLog[index].PreviousTile;
+
+                //Remove one from list
+
+                redoLog.Add(undoLog[index]);
+                undoLog.RemoveAt(index);
+
 
                 Refresh();
                 return true;
@@ -484,9 +494,16 @@ namespace Level_Editor
 
             if (keyData == (Keys.Control | Keys.Y))
             {
-                int index = actionLog.Count - 1;
+                int index = redoLog.Count - 1;
 
-                gridArray[actionLog[index].tempX, actionLog[index].tempY] = actionLog[index].NextTile;
+                if (index < 0)
+                    return false;
+
+                gridArray[redoLog[index].tempX, redoLog[index].tempY] = redoLog[index].NextTile;
+
+
+                undoLog.Add(redoLog[index]);
+                redoLog.RemoveAt(index);
 
                 Refresh();
                 return true;
