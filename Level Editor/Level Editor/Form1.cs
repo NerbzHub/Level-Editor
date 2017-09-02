@@ -10,20 +10,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//--------------------------------------------------------------------------------------
+// Namespace of the project.
+//--------------------------------------------------------------------------------------
 namespace Level_Editor
 {
-	
-	public partial class LevelEditorForm1 : Form
+    //--------------------------------------------------------------------------------------
+    // The Class for the WinForm
+    //--------------------------------------------------------------------------------------
+    public partial class LevelEditorForm1 : Form
 	{
-
+        //--------------------------------------------------------------------------------------
+        // Creating a list of UndoRedo that will keep track of the user's actions to Undo
+        //--------------------------------------------------------------------------------------
         List<UndoRedo> undoLog = new List<UndoRedo>();
 
+        //--------------------------------------------------------------------------------------
+        // Creating a list of UndoRedo that will keep track of the user's undo's to redo.
+        //--------------------------------------------------------------------------------------
         List<UndoRedo> redoLog = new List<UndoRedo>();
 
-        //Everytime i add an image to the palette, it adds the name to the list.
+        //--------------------------------------------------------------------------------------
+        // Creating a list of strings to stores the file path of imported images.
+        //--------------------------------------------------------------------------------------
         List<string> imageLog = new List<string>();
 
-
+        //--------------------------------------------------------------------------------------
+        // This function stopped Refresh flickering the panel.
+        //--------------------------------------------------------------------------------------
         protected override CreateParams CreateParams
 		{
 			get
@@ -34,13 +48,16 @@ namespace Level_Editor
 			}
 		}
 
-		private void MoveCursor()
+        //--------------------------------------------------------------------------------------
+        // A function that creates everything needed to calculate the cursor's position.
+        //--------------------------------------------------------------------------------------
+        private void MoveCursor()
 		{
-			// Set the Current cursor, move the cursor's Position,
-			// and set its clipping rectangle to the form. 
-
+			// Creates a new Cursor handle
 			Cursor = new Cursor(Cursor.Current.Handle);
+            // Allocates the position of the cursor to be the mouse's position
 			Cursor.Position = new Point(Cursor.Position.X - 50, Cursor.Position.Y - 50);
+            // This clipa the cursors location to be relative to the applic
 			Cursor.Clip = new Rectangle(Location, Size);
 		}
 
