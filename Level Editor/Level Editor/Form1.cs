@@ -57,37 +57,14 @@ namespace Level_Editor
 			Cursor = new Cursor(Cursor.Current.Handle);
             // Allocates the position of the cursor to be the mouse's position
 			Cursor.Position = new Point(Cursor.Position.X - 50, Cursor.Position.Y - 50);
-            // This clipa the cursors location to be relative to the applic
+            // This clipa the cursors location to be relative to the application
 			Cursor.Clip = new Rectangle(Location, Size);
 		}
 
-		//Bitmap[] img = new Bitmap[5];
-
-		//List<PictureBox> tileTexture = new List<PictureBox>();
-
-
-
-
-		//TileType[,] gridArray = new TileType[15, 10]
-		//{
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE},
-		//	{TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE, TileType.ENUM_NONE} ,
-		//};
-
-		int[,] gridArray = new int[15, 10]
+        //--------------------------------------------------------------------------------------
+        // Creating the Grid. The grid is just a 2 dimensional array.
+        //--------------------------------------------------------------------------------------
+        int[,] gridArray = new int[15, 10]
 	{
 			{0,0,0,0,0,0,0,0,0,0},
 			{0,0,0,0,0,0,0,0,0,0},
@@ -106,81 +83,94 @@ namespace Level_Editor
 			{0,0,0,0,0,0,0,0,0,0}
 	};
 
-
-
-		// Make it so that the [0, 0] draws (0,0, 64,64) then [1,0] draws at (65,
-
-		//https://stackoverflow.com/questions/3884860/drawing-image-to-bigger-bitmap
-		//960
-		int mapLength = 960;
+        //--------------------------------------------------------------------------------------
+        // Creating the dimensions of the Map Length and Height.
+        //--------------------------------------------------------------------------------------
+        //960
+        int mapLength = 960;
 		//640
 		int mapHeight = 640;
 
-		public void MouseLeftClick(object sender, MouseEventArgs e)
+        //--------------------------------------------------------------------------------------
+        // PaintMe Function draws the grid.
+        //--------------------------------------------------------------------------------------
+        public void paintMe(object sender, PaintEventArgs e)
 		{
-			//Cursor.Position.X
-		}
 
+            //--------------------------------------------------------------------------------------
+            // Creating a new graphics instance
+            //--------------------------------------------------------------------------------------
+            System.Drawing.Graphics g = (sender as Panel).CreateGraphics();
 
-		public void paintMe(object sender, PaintEventArgs e)
-		{
-			System.Drawing.Graphics g = (sender as Panel).CreateGraphics();
-			System.Drawing.Pen pen1 = new System.Drawing.Pen(Color.Black, 2F);
+            //--------------------------------------------------------------------------------------
+            // Creating a new pen instance
+            //--------------------------------------------------------------------------------------
+            System.Drawing.Pen pen1 = new System.Drawing.Pen(Color.Black, 2F);
 
-			// Renders the images into each 64x64 square
-			for (int i = 0; i < gridArray.GetLength(0); i++)
+            //--------------------------------------------------------------------------------------
+            // Renders the images into each 64x64 square via a nested for loop
+            //--------------------------------------------------------------------------------------
+            for (int i = 0; i < gridArray.GetLength(0); i++)
 			{
 				for (int j = 0; j < gridArray.GetLength(1); j++)
-				{
-					//g.DrawImage(img[(int)gridArray[i,j]], (64 * i), (64 * j), 64, 64);
+                {
 					g.DrawImage(Palette.palette[gridArray[i, j]], (64 * i), (64 * j), 64, 64);
 				}
 			}
 
-			//Draws the vertical of the grid
-			for (int i = 0; i < gridArray.GetLength(0); ++i)
+            //--------------------------------------------------------------------------------------
+            //Draws the vertical of the grid
+            //--------------------------------------------------------------------------------------
+            for (int i = 0; i < gridArray.GetLength(0); ++i)
 			{ 
 					g.DrawLine(pen1, (64 * i), 0, (64 * i), mapHeight);
 			}
 
-			//Draws the horizontal of the grid
-			for (int i = 0; i < gridArray.GetLength(0); ++i)
+            //--------------------------------------------------------------------------------------
+            //Draws the horizontal of the grid
+            //--------------------------------------------------------------------------------------
+            for (int i = 0; i < gridArray.GetLength(0); ++i)
 			{
 				g.DrawLine(pen1, 0, (64 * i), mapLength, (64 * i));
 			}
 			
 		}
 
-		//public void createGrid()
-		//{
-		//	for (int i = 0; i < gridArray.GetLength(0); i++)
-		//	{
-		//		for (int j = 0; j < gridArray.GetLength(0); j++)
-		//		{
-		//			Graphics g = CreateGraphics();
-
-		//			g.DrawImage(Properties.Resources.tex_Bloons_terrain_long_grass, 0, 0, 64, 64);
-		//		}
-		//	}
-		//}
-		public void CreatePalette()
+        //--------------------------------------------------------------------------------------
+        // Creating the palette based off the initial "Bloons TD Texture Pack" that is the default
+        //--------------------------------------------------------------------------------------
+        public void CreatePalette()
 		{
 			CreateDictionary(Properties.Resources.tex_none_grey);
 			CreateDictionary(Properties.Resources.tex_Bloons_terrain_grass);
 			CreateDictionary(Properties.Resources.tex_Bloons_terrain_long_grass);
 		}
 
-		List<TileButton> tileList = new List<TileButton>();
+        //--------------------------------------------------------------------------------------
+        // Creating a list of TileButtons for the imported textures to create a tilebutton.
+        //--------------------------------------------------------------------------------------
+        List<TileButton> tileList = new List<TileButton>();
 
-		public void CreateDictionary(Bitmap bitmap)
+        //--------------------------------------------------------------------------------------
+        // Creates a new addition to the dictionary.
+        //
+        // Param:
+        //		bitmap: This bitmap is the image paired in the dictionary. 
+        //--------------------------------------------------------------------------------------
+        public void CreateDictionary(Bitmap bitmap)
 		{
-			//Figure out how to add a new enum to tiletype. The problem at the moment is the new tiletype is just set to enum none. I need to create a new enum & add it in the palette
-
-
-			int newDictionary = Palette.palette.Count;
-			Palette.palette.Add(newDictionary, bitmap);
-
-			TileButton tile = new TileButton();
+            //--------------------------------------------------------------------------------------
+            // An int that keeps count of the palette count.
+            //--------------------------------------------------------------------------------------
+            int newDictionary = Palette.palette.Count;
+            //--------------------------------------------------------------------------------------
+            // This adds the new texture to the palette.
+            //--------------------------------------------------------------------------------------
+            Palette.palette.Add(newDictionary, bitmap);
+            //--------------------------------------------------------------------------------------
+            // 
+            //--------------------------------------------------------------------------------------
+            TileButton tile = new TileButton();
 			tileList.Add(tile);//add to list
 
 			// What do I use for location?
