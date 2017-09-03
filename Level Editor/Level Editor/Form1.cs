@@ -168,12 +168,11 @@ namespace Level_Editor
             //--------------------------------------------------------------------------------------
             Palette.palette.Add(newDictionary, bitmap);
             //--------------------------------------------------------------------------------------
-            // 
+            // Creates a new tilebutton and adds the new tile to the list.
             //--------------------------------------------------------------------------------------
             TileButton tile = new TileButton();
 			tileList.Add(tile);//add to list
 
-			// What do I use for location?
 
 			tile.Parent = tabTerrain;
 			tile.BackColor = Color.Black;
@@ -192,70 +191,54 @@ namespace Level_Editor
 			//tile.Show();
 		}
 
-		public LevelEditorForm1()
+        //--------------------------------------------------------------------------------------
+        // This is the function that is what happens at startup of the application.
+        //--------------------------------------------------------------------------------------
+        public LevelEditorForm1()
         {
-			
-			InitializeComponent();
-			CreatePalette();
-
-
-
-			//typeof(Panel).InvokeMember("DoubleBuffered",
-			//	BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
-			//	null, GridPanel, new object[] { true });
+            //--------------------------------------------------------------------------------------
+            // Initializes the form.
+            //--------------------------------------------------------------------------------------
+            InitializeComponent();
+            //--------------------------------------------------------------------------------------
+            // Creates the Palette
+            //--------------------------------------------------------------------------------------
+            CreatePalette();
 		}
 
-
-		private void LevelEditorForm1_Load(object sender, EventArgs e)
+        //--------------------------------------------------------------------------------------
+        // This function executes when the form is loaded.
+        //--------------------------------------------------------------------------------------
+        private void LevelEditorForm1_Load(object sender, EventArgs e)
         {
-			
 			Bitmap map = new Bitmap(mapHeight, mapLength);
-			//Example of one image
-			//PictureBox texGrass = new PictureBox();
-			//texGrass.Size = new Size(64, 64);
-			//texGrass.BackgroundImage = Properties.Resources.tex_Bloons_terrain_grass;
-			//PictureBox texLongGrass = new PictureBox();
-			//texLongGrass.Size = new Size(64, 64);
-			//texLongGrass.BackgroundImage = Properties.Resources.tex_Bloons_terrain_long_grass;
-			//End example
-
-			//texGrass.Location = new Point(50, 50);
-
-			//Controls.Add(texGrass);
-			//palette.Add(TileType.ENUM_NONE, Properties.Resources.tex_none_grey);
-			//palette.Add(TileType.ENUM_GRASS, Properties.Resources.tex_Bloons_terrain_grass);
-			//palette.Add(TileType.ENUM_LONG_GRASS, Properties.Resources.tex_Bloons_terrain_long_grass);
-		
-			//tileTexture.Add(texture);
 		}
 
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e){}
 
-        }
-
+        //--------------------------------------------------------------------------------------
+        // This function executes when the Load button of the drop menu.
+        //--------------------------------------------------------------------------------------
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //--------------------------------------------------------------------------------------
+            // Creates a new instance of the file browser.
+            //--------------------------------------------------------------------------------------
             OpenFileDialog open = new OpenFileDialog();
 
-			open.InitialDirectory = @"C:";
-			open.Filter = "Text files (*.txt)|*.txt|Image files (*.png *.bmp *.jpg)|*.jpg; *.bmp; *.png";
-
-
-			//Graphics g = CreateGraphics();
-
-			//g.DrawImage(Properties.Resources.tex_Bloons_terrain_long_grass, 0, 0, 64, 64);
+            //--------------------------------------------------------------------------------------
+            // Sets the file browser to default open to the C drive.
+            //--------------------------------------------------------------------------------------
+            open.InitialDirectory = @"C:";
+            //--------------------------------------------------------------------------------------
+            // Sets the files that the user can open.
+            //--------------------------------------------------------------------------------------
+            open.Filter = "Text files (*.txt)|*.txt|Image files (*.png *.bmp *.jpg)|*.jpg; *.bmp; *.png";
 
 			if (open.ShowDialog() == DialogResult.OK)
             {
-				//Bitmap image = (Bitmap)Image.FromFile(open.FileName);
-				//DemoPictureBox.Image = (Bitmap)Image.FromFile(open.FileName);
-
 				string text = System.IO.File.ReadAllText(open.FileName);
-				//This takes it in as a 1D string list. How do I change it to a 2D TileType list.
-				//List<string> allLinesText = File.ReadAllLines(text).ToList();
-
-
+			
 				var lines = File.ReadAllLines(open.FileName);
 
                 //for (int i = 0; i < lines.Length; i++)
