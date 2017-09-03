@@ -29,21 +29,15 @@
         private void InitializeComponent()
         {
             this.GridPanel = new System.Windows.Forms.Panel();
-            this.DemoPictureBox = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabTexture = new System.Windows.Forms.TabControl();
             this.tabTerrain = new System.Windows.Forms.TabPage();
-            this.tabRoad = new System.Windows.Forms.TabPage();
-            this.tabTowers = new System.Windows.Forms.TabPage();
-            this.tabScenery = new System.Windows.Forms.TabPage();
             this.buttonImport = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.DemoPictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabTexture.SuspendLayout();
-            this.tabTerrain.SuspendLayout();
             this.SuspendLayout();
             // 
             // GridPanel
@@ -59,14 +53,6 @@
             this.GridPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.GridPanel_DragDrop);
             this.GridPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.GridPanel_DragEnter);
             this.GridPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.paintMe);
-            // 
-            // DemoPictureBox
-            // 
-            this.DemoPictureBox.Location = new System.Drawing.Point(56, 375);
-            this.DemoPictureBox.Name = "DemoPictureBox";
-            this.DemoPictureBox.Size = new System.Drawing.Size(117, 78);
-            this.DemoPictureBox.TabIndex = 2;
-            this.DemoPictureBox.TabStop = false;
             // 
             // menuStrip1
             // 
@@ -105,61 +91,27 @@
             // tabTexture
             // 
             this.tabTexture.Controls.Add(this.tabTerrain);
-            this.tabTexture.Controls.Add(this.tabRoad);
-            this.tabTexture.Controls.Add(this.tabTowers);
-            this.tabTexture.Controls.Add(this.tabScenery);
-            this.tabTexture.Location = new System.Drawing.Point(990, 30);
+            this.tabTexture.Location = new System.Drawing.Point(1018, 27);
             this.tabTexture.Name = "tabTexture";
             this.tabTexture.SelectedIndex = 0;
-            this.tabTexture.Size = new System.Drawing.Size(251, 513);
+            this.tabTexture.Size = new System.Drawing.Size(206, 579);
             this.tabTexture.TabIndex = 2;
             // 
             // tabTerrain
             // 
-            this.tabTerrain.Controls.Add(this.DemoPictureBox);
             this.tabTerrain.Location = new System.Drawing.Point(4, 22);
             this.tabTerrain.Name = "tabTerrain";
             this.tabTerrain.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTerrain.Size = new System.Drawing.Size(243, 487);
+            this.tabTerrain.Size = new System.Drawing.Size(198, 553);
             this.tabTerrain.TabIndex = 0;
-            this.tabTerrain.Text = "Terrain";
+            this.tabTerrain.Text = "Tiles";
             this.tabTerrain.UseVisualStyleBackColor = true;
-            // 
-            // tabRoad
-            // 
-            this.tabRoad.Location = new System.Drawing.Point(4, 22);
-            this.tabRoad.Name = "tabRoad";
-            this.tabRoad.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRoad.Size = new System.Drawing.Size(243, 487);
-            this.tabRoad.TabIndex = 1;
-            this.tabRoad.Text = "Road";
-            this.tabRoad.UseVisualStyleBackColor = true;
-            // 
-            // tabTowers
-            // 
-            this.tabTowers.Location = new System.Drawing.Point(4, 22);
-            this.tabTowers.Name = "tabTowers";
-            this.tabTowers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTowers.Size = new System.Drawing.Size(243, 487);
-            this.tabTowers.TabIndex = 2;
-            this.tabTowers.Text = "Towers";
-            this.tabTowers.UseVisualStyleBackColor = true;
-            // 
-            // tabScenery
-            // 
-            this.tabScenery.Location = new System.Drawing.Point(4, 22);
-            this.tabScenery.Name = "tabScenery";
-            this.tabScenery.Padding = new System.Windows.Forms.Padding(3);
-            this.tabScenery.Size = new System.Drawing.Size(243, 487);
-            this.tabScenery.TabIndex = 3;
-            this.tabScenery.Text = "Scenery";
-            this.tabScenery.UseVisualStyleBackColor = true;
             // 
             // buttonImport
             // 
-            this.buttonImport.Location = new System.Drawing.Point(994, 629);
+            this.buttonImport.Location = new System.Drawing.Point(1022, 608);
             this.buttonImport.Name = "buttonImport";
-            this.buttonImport.Size = new System.Drawing.Size(75, 23);
+            this.buttonImport.Size = new System.Drawing.Size(202, 58);
             this.buttonImport.TabIndex = 3;
             this.buttonImport.Text = "Import Texture";
             this.buttonImport.UseVisualStyleBackColor = true;
@@ -178,11 +130,9 @@
             this.Name = "LevelEditorForm1";
             this.Text = "Nathan\'s Level Editor";
             this.Load += new System.EventHandler(this.LevelEditorForm1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DemoPictureBox)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabTexture.ResumeLayout(false);
-            this.tabTerrain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,12 +145,8 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-		private System.Windows.Forms.PictureBox DemoPictureBox;
 		private System.Windows.Forms.TabControl tabTexture;
 		private System.Windows.Forms.TabPage tabTerrain;
-		private System.Windows.Forms.TabPage tabRoad;
-		private System.Windows.Forms.TabPage tabTowers;
-		private System.Windows.Forms.TabPage tabScenery;
 		private System.Windows.Forms.Button buttonImport;
 	}
 }
