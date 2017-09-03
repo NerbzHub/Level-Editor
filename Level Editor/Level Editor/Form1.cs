@@ -394,281 +394,336 @@ namespace Level_Editor
 		}
 
         //--------------------------------------------------------------------------------------
-        // 
+        // This function executes when tileButton1 is clicked.
         //--------------------------------------------------------------------------------------
-        private void tileButton1_MouseDown(object sender,
-		System.Windows.Forms.MouseEventArgs e)
+        private void tileButton1_Click(object sender, EventArgs e)
 		{
-			//tileButton1.DoDragDrop(tileButton1.Value, DragDropEffects.Copy |
-			//   DragDropEffects.Move);
+            //--------------------------------------------------------------------------------------
+            // Checks whether the tilebutton has been selected.
+            //--------------------------------------------------------------------------------------
+            ((TileButton)sender).Select();
+
+            //--------------------------------------------------------------------------------------
+            // Once it has been selected, add the selected.
+            //--------------------------------------------------------------------------------------
+            Palette.selected = ((TileButton)sender).myType;
+
+            //--------------------------------------------------------------------------------------
+            // This function helps refresh work a bit smoother.
+            //--------------------------------------------------------------------------------------
+            Invalidate();
+
+            //--------------------------------------------------------------------------------------
+            // Refresh update/Refreshes the panel to be the most recent version of the grid array
+            // so that if any changes occur, it will display them straight away.
+            //--------------------------------------------------------------------------------------
+            Refresh();
 		}
 
-
-
-		private void pictureBoxTexture02_Click(object sender, EventArgs e)
-		{
-			//(sender as TileButton).myType;
-		}
-
-		private void pictureBoxTexture01_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void pictureBoxTexture03_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void tileButton1_Click(object sender, EventArgs e)
-		{
-			//gridArray[0, 0] = TileType.ENUM_GRASS;
-			//TileType.selectedTexture = Proper;
-			((TileButton)sender).Select();
-			Palette.selected = ((TileButton)sender).myType;
-			Invalidate();
-			Refresh();
-		}
-
+        //--------------------------------------------------------------------------------------
+        // Save to txt is the function that saves the grid array to text.
+        //--------------------------------------------------------------------------------------
         private void SaveToTxt()
         {
-            //Gets the application's path in a string
-            //Path.GetDirectoryName(Application.ExecutablePath).Replace(@"bin\debug\", string.Empty);
-            
+            //--------------------------------------------------------------------------------------
+            // Creates a new string that has nothing in it.
+            //--------------------------------------------------------------------------------------
             string text_line = "";
 
+            //--------------------------------------------------------------------------------------
+            // A nested for loop that changes all of the grid array's int values to a string.
+            //--------------------------------------------------------------------------------------
             for (int i = 0; i < gridArray.GetLength(1); i++)
             {
+                //--------------------------------------------------------------------------------------
+                // Nested for loop.
+                //--------------------------------------------------------------------------------------
                 for (int j = 0; j < gridArray.GetLength(0); j++)
                 {
+                    //--------------------------------------------------------------------------------------
+                    // Changes the int to a string.
+                    //--------------------------------------------------------------------------------------
                     text_line += gridArray[j, i].ToString();
+                    //--------------------------------------------------------------------------------------
+                    // Changes to a new line after every value in the array for easier loadability.
+                    //--------------------------------------------------------------------------------------
                     text_line += "\n";
                 }
             }
-
-            //Trying to gain access to denied acces files in the project directory.
-
+            //--------------------------------------------------------------------------------------
+            // These take the grid array as a string and save it to a .txt in the file dir.
+            //--------------------------------------------------------------------------------------
             File.SetAttributes(Path.GetDirectoryName(Application.ExecutablePath), FileAttributes.Normal);
             File.WriteAllText(Path.GetDirectoryName(Application.ExecutablePath), text_line);
-
-            //Make sure that the temp files get cleaned up after the application is closed.
         }
 
-		public void GridPanel_Click(object sender, EventArgs e)
+        //--------------------------------------------------------------------------------------
+        // This function executes when the panel is clicked.S
+        //--------------------------------------------------------------------------------------
+        public void GridPanel_Click(object sender, EventArgs e)
 		{
-            // SaveToTxt();
+            //--------------------------------------------------------------------------------------
+            // This clears the redo log once a new action is done.
+            //--------------------------------------------------------------------------------------
             redoLog.Clear();
-			//TileType selectedTexture;
-			Point point = GridPanel.PointToClient(Cursor.Position);
-			//string mouseString;
-			//mouseString = Cursor.Position.X;
-			//float fTileX = float.Parse(mouseString);
-			int tileX = point.X;
 
-			//mouseString = Cursor.Position.Y.ToString();
-			//float fTileY = float.Parse(mouseString);
-			int tileY = point.Y;
+            //--------------------------------------------------------------------------------------
+            // Creates a new point that represents the mouse's position when the panel is clicked.
+            //--------------------------------------------------------------------------------------
+            Point point = GridPanel.PointToClient(Cursor.Position);
 
-			tileX = tileX / 64;
+            //--------------------------------------------------------------------------------------
+            // Creating a new int to store the point's X value.
+            //--------------------------------------------------------------------------------------
+            int tileX = point.X;
+
+            //--------------------------------------------------------------------------------------
+            // Creating a new int to store the point's Y value.
+            //--------------------------------------------------------------------------------------
+            int tileY = point.Y;
+
+            //--------------------------------------------------------------------------------------
+            // This equation calculates which tile is being pressed by dividing the mouse's
+            // position by the tile size which is set to 64.
+            //--------------------------------------------------------------------------------------
+            tileX = tileX / 64;
 			tileY = tileY / 64;
 
+            //--------------------------------------------------------------------------------------
+            // Creates a new UndoRedo class.
+            //--------------------------------------------------------------------------------------
             UndoRedo undoRedo = new UndoRedo();
 
+            //--------------------------------------------------------------------------------------
+            // Stores all of the necessary values into the undo redo so that it can remember when
+            // needed.
+            //--------------------------------------------------------------------------------------
             undoRedo.tempX = tileX;
             undoRedo.tempY = tileY;
             undoRedo.PreviousTile = gridArray[tileX, tileY];
             undoRedo.NextTile = Palette.selected;
 
+            //--------------------------------------------------------------------------------------
+            // Adds the undoRedo with all of the values to the undoLog.
+            //--------------------------------------------------------------------------------------
             undoLog.Add(undoRedo);
-            
-    
 
+            //--------------------------------------------------------------------------------------
+            // Places the selected image from the palette into the tile being clicked on.
+            //--------------------------------------------------------------------------------------
             gridArray[tileX, tileY] = Palette.selected;
-			GridPanel.Invalidate();
-			GridPanel.Refresh();
+
+            //--------------------------------------------------------------------------------------
+            // This function helps Refresh run smoothly.
+            //--------------------------------------------------------------------------------------
+            GridPanel.Invalidate();
+
+            //--------------------------------------------------------------------------------------
+            // This refreshes the panel so that it shows any changes to the grid.
+            //--------------------------------------------------------------------------------------
+            GridPanel.Refresh();
 		}
 
-		private void tileButton2_Click(object sender, EventArgs e)
+        //--------------------------------------------------------------------------------------
+        // This function executes when the import button is clicked.
+        //--------------------------------------------------------------------------------------
+        private void buttonImport_Click(object sender, EventArgs e)
 		{
-			//this.FormBorderStyle
-			Palette.selected = 1;
-			Invalidate();
-			Refresh();
-		}
+            //--------------------------------------------------------------------------------------
+            // Creates a new instance of the OpenFileDialog
+            //--------------------------------------------------------------------------------------
+            OpenFileDialog open = new OpenFileDialog();
 
-		private void tileButton3_Click(object sender, EventArgs e)
-		{
-			Palette.selected = 2;
-			Invalidate();
-			Refresh();
-		}
+            //--------------------------------------------------------------------------------------
+            // Sets the file browser to open at the base C drive directory by default.
+            //--------------------------------------------------------------------------------------
+            open.InitialDirectory = @"C:";
 
-		private void buttonImport_Click(object sender, EventArgs e)
-		{
-			OpenFileDialog open = new OpenFileDialog();
+            //--------------------------------------------------------------------------------------
+            // This limits the user's import files to only ones of my choice.
+            //--------------------------------------------------------------------------------------
+            open.Filter = "Image files (*.png *.bmp *.jpg)|*.jpg; *.bmp; *.png";
 
-			open.InitialDirectory = @"C:";
-			open.Filter = "Image files (*.png *.bmp *.jpg)|*.jpg; *.bmp; *.png";
-
-
-			//Graphics g = CreateGraphics();
-
-			//g.DrawImage(Properties.Resources.tex_Bloons_terrain_long_grass, 0, 0, 64, 64);
-
-			if (open.ShowDialog() == DialogResult.OK)
+            //--------------------------------------------------------------------------------------
+            // If the OK button of the file browser is clicked then execute this code.
+            //--------------------------------------------------------------------------------------
+            if (open.ShowDialog() == DialogResult.OK)
 			{
-				Bitmap image = (Bitmap)Image.FromFile(open.FileName);
+                //--------------------------------------------------------------------------------------
+                // Creates a new bitmap from the file that is chosen inside the file browser.
+                //--------------------------------------------------------------------------------------
+                Bitmap image = (Bitmap)Image.FromFile(open.FileName);
 
+                //--------------------------------------------------------------------------------------
+                // Add the new imported image's filename to the imageLog.
+                //--------------------------------------------------------------------------------------
                 imageLog.Add(open.FileName);
-				//DemoPictureBox.Image = (Bitmap)Image.FromFile(open.FileName);
 
-				CreateDictionary(image);
-				// I need to add the image to an empty picturebox.
-				// Then I need to add a new enum,
-				// Then add a new dictionary add to add the new image to the new enum.
-
-				
-				//string text = System.IO.File.ReadAllText(open.FileName);
-
+                //--------------------------------------------------------------------------------------
+                // Adds the new imported image to the dictionary.
+                //--------------------------------------------------------------------------------------
+                CreateDictionary(image);
 			}
 		}
 
+        //--------------------------------------------------------------------------------------
+        // This function allows Drag and Drop to occur.
+        //--------------------------------------------------------------------------------------
         private void GridPanel_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
         }
 
+        //--------------------------------------------------------------------------------------
+        // This function gets executed when someone drags an image into the panel.
+        //--------------------------------------------------------------------------------------
         private void GridPanel_DragDrop(object sender, DragEventArgs e)
         {
-            //Save
+            //--------------------------------------------------------------------------------------
+            // This takes in the filename as a string array.
+            //--------------------------------------------------------------------------------------
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
 
+            //--------------------------------------------------------------------------------------
+            // Creating a new string that takes the array of filenames and turns them into a string.
+            //--------------------------------------------------------------------------------------
             string strFiles = String.Join(" ", files);
 
+
+            //--------------------------------------------------------------------------------------
+            // Adds the image paths to the image log.
+            //--------------------------------------------------------------------------------------
             imageLog.Add(strFiles);
 
+            //--------------------------------------------------------------------------------------
+            // Creates a new bitmap from the filename string
+            //--------------------------------------------------------------------------------------
             Bitmap image = (Bitmap)Image.FromFile(strFiles);
 
+            //--------------------------------------------------------------------------------------
+            // Adds the created bitmap to the dictionary.
+            //--------------------------------------------------------------------------------------
             CreateDictionary(image);
-            //foreach (string file in files)
-            //MessageBox.Show(file);
+
+            //--------------------------------------------------------------------------------------
+            // This function helps refresh run smoother.
+            //--------------------------------------------------------------------------------------
             Invalidate();
-            Refresh();
-                  
+
+            //--------------------------------------------------------------------------------------
+            // Refresh updates the grid to the most recent version.
+            //--------------------------------------------------------------------------------------
+            Refresh();  
         }
 
-        public void Undo()
-        {
-            //Export the old one to tempRedo.txt
-
-
-            //load in the tempUndo.txt
-
-        }
-
+        //--------------------------------------------------------------------------------------
+        // This function allows for keyboard shortcuts to be used.
+        //--------------------------------------------------------------------------------------
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
+            //--------------------------------------------------------------------------------------
+            // Creates a shorcut for ctrl + z for undo.
+            //--------------------------------------------------------------------------------------
             if (keyData == (Keys.Control | Keys.Z))
-            { 
+            {
+                //--------------------------------------------------------------------------------------
+                // A new int for the index of the undoLog. This goes back 1 action in the undoLog.
+                //--------------------------------------------------------------------------------------
+                int index = undoLog.Count - 1;
 
-            int index = undoLog.Count - 1;
-
+                //--------------------------------------------------------------------------------------
+                // Checks for if there is no more actions to undo then return false.
+                //--------------------------------------------------------------------------------------
                 if (index < 0)
                     return false;
+
+                //--------------------------------------------------------------------------------------
+                // Changes the grid array to the last action / Undo.
+                //--------------------------------------------------------------------------------------
                 gridArray[undoLog[index].tempX, undoLog[index].tempY] = undoLog[index].PreviousTile;
 
-                //Remove one from list
-
+                //--------------------------------------------------------------------------------------
+                // Adds the undone action to the redo log so that it can be redone, once undone.
+                //--------------------------------------------------------------------------------------
                 redoLog.Add(undoLog[index]);
+
+                //--------------------------------------------------------------------------------------
+                // Remove the action that has been undone from the undo log so that it can iterate
+                // further through the undo log.
+                //--------------------------------------------------------------------------------------
                 undoLog.RemoveAt(index);
 
-
+                //--------------------------------------------------------------------------------------
+                // Refresh refreshes the grid array.
+                //--------------------------------------------------------------------------------------
                 Refresh();
+
+                //--------------------------------------------------------------------------------------
+                // Returns the bool as true.
+                //--------------------------------------------------------------------------------------
                 return true;
             }
 
+            //--------------------------------------------------------------------------------------
+            // Creates the shortcut for ctrl + y for redo.
+            //--------------------------------------------------------------------------------------
             if (keyData == (Keys.Control | Keys.Y))
             {
+                //--------------------------------------------------------------------------------------
+                // Creates an int for the index of the redoLog. This goes back 1 action in the redoLog.
+                //--------------------------------------------------------------------------------------
                 int index = redoLog.Count - 1;
 
+                //--------------------------------------------------------------------------------------
+                // A check to see if the redoLog can go back any further or not. If not, return false.
+                //--------------------------------------------------------------------------------------
                 if (index < 0)
                     return false;
 
+                //--------------------------------------------------------------------------------------
+                // Allocates the grid array values of the redoLog into the grid array.
+                //--------------------------------------------------------------------------------------
                 gridArray[redoLog[index].tempX, redoLog[index].tempY] = redoLog[index].NextTile;
 
-
+                //--------------------------------------------------------------------------------------
+                // Add the last redoLog index to the undoLog so that you are able to undo the redo.
+                //--------------------------------------------------------------------------------------
                 undoLog.Add(redoLog[index]);
+
+                //--------------------------------------------------------------------------------------
+                // Remove the indexed redoLog action as it has been used.
+                //--------------------------------------------------------------------------------------
                 redoLog.RemoveAt(index);
 
+                //--------------------------------------------------------------------------------------
+                // Refreshes the grid array so that it shows the most recent grid.
+                //--------------------------------------------------------------------------------------
                 Refresh();
+
+                //--------------------------------------------------------------------------------------
+                // Return the bool as true.
+                //--------------------------------------------------------------------------------------
                 return true;
             }
+
+            //--------------------------------------------------------------------------------------
+            // This is needed for the key shortcuts.
+            //--------------------------------------------------------------------------------------
             return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 
+    //--------------------------------------------------------------------------------------
+    // A class to store all of the most recent actions in to undo and redo.
+    //--------------------------------------------------------------------------------------
     public class UndoRedo
     {
-        //I could create a new dictionary that will hold the point and the image that was selected at the time. 
-        //This would mean that I can just call from the dictionary and it will place it in the normal dictionary.
-
-        //There is a way that I might be able to store it in the same dictionary. The issue with this would be if it creates another one in the list, it might stuff up the
-        //save file because it might have the undo numbers instead of the normal ones which is bad.
-        
-        //There is probably also a way to just take the last one that got placed from the list. This could just be stored in an int.
-
-        //Create a log that contains all of the points and images that have been used. 
-
-
-        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        //Create a temp.txt that holds the last drawn array and when undo is pressed, revert it back to that. When undo is pressed, it also changes the temp to the array, pre-undo.
-        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-            //Make a list of lists
-
-
-        //These values are to temporarily hold the point incase the user decides to undo. It will hold the most recent point click
+        //--------------------------------------------------------------------------------------
+        // Creating public ints to store the values for undoing and redoing actions. 
+        //--------------------------------------------------------------------------------------
         public int tempX = 0; //tempX is the pointX created by GridPanel_Click function
         public int tempY = 0; //tempY is the pointY created by GridPanel_Click function
-        public int PreviousTile = 0;
-        public int NextTile = 0;
-
-
+        public int PreviousTile = 0; // PreviousTile is the previous tile that was clicked.
+        public int NextTile = 0; // Next tile is the next tile.
     }
 }
-
-//Make not walkable bool that will show a little red x ontop of tiles.
-
-//marking collision
-
-//Undo and redo 
-
-    //create a struct / class
-    // take in the values of the last tile and when they click on a new one it adds the most recent tile value to a list. Undo changes it back then redo changes it back.
-
-
-//save the file path into a file so that it can find what the picture was.
-
-
-
-
-
-
-
-
-//https://www.youtube.com/watch?v=lk0GsyxCj-U&index=1&list=PL0A864073DA96A7DA - this is the tutorial in xna
-//Bitmap Blitting
-// Look at picture that matt drew.
-// Create an array of enums. The enums then get assigned to textures. 
-//[1, 1, 2
-// 0, 2, 0
-// 1, 1, 2]
-// The enums will be allocated to different textures which allows the array to be exported and re-imported to retain the same value.
-// This means that the load function will be able to work.
-// Utilize bitmap blitting to allocate where inside a picture box the textures will be placed. https://stackoverflow.com/questions/837423/render-a-section-of-an-image-to-a-bitmap-c-sharp-winforms , https://stackoverflow.com/questions/13103682/draw-a-bitmap-image-on-the-screen
-// The diagram matt drew shows how this will be implemented.
-// The .NET container classes ppt explains the syntax for arrays. It's inside c# basics 
-// To allocate a texture to an enum, use a dictionary. The dictionary is in the same powerpoint as arrays.
-// In the example it has a name then a number, for me, the name will be the enum value and the number will be the texture.
