@@ -9,14 +9,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//--------------------------------------------------------------------------------------
+// Namespace of the project.
+//--------------------------------------------------------------------------------------
 namespace Level_Editor
 {
-	class TileButton : System.Windows.Forms.PictureBox
+    //--------------------------------------------------------------------------------------
+    // A new tilebutton class that derives from the picturebox class.
+    // The tilebutton is created so that I have a custom picturebox that has more functions 
+    // than a regular picturebox.
+    //--------------------------------------------------------------------------------------
+    class TileButton : System.Windows.Forms.PictureBox
 	{
-		public int Value;
+        //--------------------------------------------------------------------------------------
+        // A public int to hold a value.
+        //--------------------------------------------------------------------------------------
+        public int Value;
 
-		[Description("Test text displayed in the textbox"), Category("Data")]
-		public int myType
+        //--------------------------------------------------------------------------------------
+        // The description of the tileButton.
+        //--------------------------------------------------------------------------------------
+        [Description("Test text displayed in the textbox"), Category("Data")]
+
+        //--------------------------------------------------------------------------------------
+        // Creating a new int that holds myType.
+        //--------------------------------------------------------------------------------------
+        public int myType
 		{
 			get
 			{
@@ -29,14 +47,5 @@ namespace Level_Editor
 				Value = value;
 			}
 		}
-
-		private void OnClick(object sender, MouseEventArgs e)
-		{
-			
-		}
-
-
-		//Assign the img in the img[] array to the enum so that it displays the image.
-
 	}
 }
