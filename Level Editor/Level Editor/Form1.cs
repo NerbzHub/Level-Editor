@@ -235,41 +235,77 @@ namespace Level_Editor
             //--------------------------------------------------------------------------------------
             open.Filter = "Text files (*.txt)|*.txt|Image files (*.png *.bmp *.jpg)|*.jpg; *.bmp; *.png";
 
-			if (open.ShowDialog() == DialogResult.OK)
+            //--------------------------------------------------------------------------------------
+            // If the user has pressed OK on the file browser then do this.
+            //--------------------------------------------------------------------------------------
+            if (open.ShowDialog() == DialogResult.OK)
             {
-				string text = System.IO.File.ReadAllText(open.FileName);
-			
-				var lines = File.ReadAllLines(open.FileName);
+                //--------------------------------------------------------------------------------------
+                // Takes the selected file's name and puts it into a string.
+                //--------------------------------------------------------------------------------------
+                string text = System.IO.File.ReadAllText(open.FileName);
 
-                //for (int i = 0; i < lines.Length; i++)
-                //{
-                //	var fields = lines[i];
-                //}
+                //--------------------------------------------------------------------------------------
+                // A variable to store the text from the file.
+                //--------------------------------------------------------------------------------------
+                var lines = File.ReadAllLines(open.FileName);
+
+                //--------------------------------------------------------------------------------------
+                // A string array to hold each string that has been seperated by commas.
+                //--------------------------------------------------------------------------------------
                 string[] palettePath = lines[0].Split(',');
 
-                
+                //--------------------------------------------------------------------------------------
+                // For loop to iterate through each filename from the saved path and place them into the palette array.
+                //--------------------------------------------------------------------------------------
                 for (int i = 0; i < palettePath.Length; i++)
                 {
-
+                    //--------------------------------------------------------------------------------------
+                    // If the palette path string is empty, continue
+                    //--------------------------------------------------------------------------------------
                     if (palettePath[i] == "")
                         continue;
-                    
-                    //From here I need to get the values back into the palette
-                    //Unless I can export the palette too. 
+
+                    //--------------------------------------------------------------------------------------
+                    // This takes the filename and finds the actual file.
+                    //--------------------------------------------------------------------------------------
                     Bitmap image = (Bitmap)Image.FromFile(palettePath[i]);
+                    //--------------------------------------------------------------------------------------
+                    // Adds the image found via the filename to the palette array.
+                    //--------------------------------------------------------------------------------------
                     imageLog.Add(palettePath[i]);
+                    //--------------------------------------------------------------------------------------
+                    // This adds the image to a new dictionary input.
+                    //--------------------------------------------------------------------------------------
                     CreateDictionary(image);
 
                 }
 
-				int lineNumber = 1;
-				for (int i = 0; i < gridArray.GetLength(1); i++)
+                //--------------------------------------------------------------------------------------
+                // Allocating the line number to 1 allows the reading of the file to skip the first line
+                // which contains the image directories.
+                //--------------------------------------------------------------------------------------
+                int lineNumber = 1;
+
+                //--------------------------------------------------------------------------------------
+                // A for loops that goes through the save file and allocates the images of the grid 
+                // accordingly
+                //--------------------------------------------------------------------------------------
+                for (int i = 0; i < gridArray.GetLength(1); i++)
 				{
-					for (int j = 0; j < gridArray.GetLength(0); j++)
+                    //--------------------------------------------------------------------------------------
+                    // Nested for loop
+                    //--------------------------------------------------------------------------------------
+                    for (int j = 0; j < gridArray.GetLength(0); j++)
 					{
-						//gridArray[j, i] = (TileType)Enum.Parse(typeof(TileType), lines[lineNumber]);
-						gridArray[j, i] = Convert.ToInt32(lines[lineNumber]);
-						++lineNumber;
+                        //--------------------------------------------------------------------------------------
+                        // Converts the numbers of the save file to an int32 so that it is readable in the array
+                        //--------------------------------------------------------------------------------------
+                        gridArray[j, i] = Convert.ToInt32(lines[lineNumber]);
+                        //--------------------------------------------------------------------------------------
+                        // goes to next line to read the next int.
+                        //--------------------------------------------------------------------------------------
+                        ++lineNumber;
 					}
 				}
 
@@ -277,27 +313,41 @@ namespace Level_Editor
 
 
             }
-
+            //--------------------------------------------------------------------------------------
+            // Once it has finished loading, refresh the panel so that it displays the most recent 
+            // grid.
+            //--------------------------------------------------------------------------------------
             Refresh();
 		}
 
-		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        //--------------------------------------------------------------------------------------
+        // This code executes when the Save button is clicked from the drop menu.
+        //--------------------------------------------------------------------------------------
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SaveFileDialog save = new SaveFileDialog();
-			save.Filter = "text files |*.txt";
-			if(save.ShowDialog() == DialogResult.OK)
+            //--------------------------------------------------------------------------------------
+            // Creates a new instance of the file browser.
+            //--------------------------------------------------------------------------------------
+            SaveFileDialog save = new SaveFileDialog();
+
+            //--------------------------------------------------------------------------------------
+            // Limits the user to only be able to save to a txt file.
+            //--------------------------------------------------------------------------------------
+            save.Filter = "text files |*.txt";
+
+            //--------------------------------------------------------------------------------------
+            // If the user has pressed OK on the file browser, execute this code.
+            //--------------------------------------------------------------------------------------
+            if (save.ShowDialog() == DialogResult.OK)
 			{
-				string text_line = "";
+                //--------------------------------------------------------------------------------------
+                // Creates a new string set to nothing.
+                //--------------------------------------------------------------------------------------
+                string text_line = "";
 
-                //Write line 0 
-                //Write it as location comma location comma
-                //Read it in as split strings. From there it'd load in each one.
-                // Look at the load for loop with the lines[linenumber] and the line number is 0. This means it will only go through the written line.
-
-                //text_line = 
-
-
-
+                //--------------------------------------------------------------------------------------
+                // 
+                //--------------------------------------------------------------------------------------
                 for (int i = 0; i < imageLog.Count; i++)
                 {
 
