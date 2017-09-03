@@ -346,49 +346,57 @@ namespace Level_Editor
                 string text_line = "";
 
                 //--------------------------------------------------------------------------------------
-                // 
+                // Saves the image log as a string with a comma between each value in the array.
                 //--------------------------------------------------------------------------------------
                 for (int i = 0; i < imageLog.Count; i++)
                 {
-
+                    //--------------------------------------------------------------------------------------
+                    // Changing the array to a string.
+                    //--------------------------------------------------------------------------------------
                     text_line += imageLog[i].ToString();
-                    text_line += ",";
 
-                    //string[] parts = text_line.Split(',');
+                    //--------------------------------------------------------------------------------------
+                    // Place a comma between each value of the array.
+                    //--------------------------------------------------------------------------------------
+                    text_line += ",";
                 }
 
+                //--------------------------------------------------------------------------------------
+                // Saves the grid array on a single line every value.
+                //--------------------------------------------------------------------------------------
                 for (int i = 0; i < gridArray.GetLength(1); i++)
 				{
-					for (int j = 0; j < gridArray.GetLength(0); j++)
+                    //--------------------------------------------------------------------------------------
+                    // Nested for loop.
+                    //--------------------------------------------------------------------------------------
+                    for (int j = 0; j < gridArray.GetLength(0); j++)
 					{
+                        //--------------------------------------------------------------------------------------
+                        // Creates a new line.
+                        //--------------------------------------------------------------------------------------
                         text_line += "\n";
-						text_line += gridArray[j, i].ToString();
-						
+
+                        //--------------------------------------------------------------------------------------
+                        // Turns the ints in the array to strings so that they can be saves in a .txt.
+                        //--------------------------------------------------------------------------------------
+                        text_line += gridArray[j, i].ToString();
 					}
 				}
-
-				File.WriteAllText(save.FileName, text_line);
+                //--------------------------------------------------------------------------------------
+                // This saves the data to a text file.
+                //--------------------------------------------------------------------------------------
+                File.WriteAllText(save.FileName, text_line);
 			}
-			//this is a potentially good tutorial, this function is unfinished though, ask richard.
-			// http://www.homeandlearn.co.uk/csharp/csharp_s11p3.html
-			//string file_name = "C:\\Users\\s171735\\Downloads\\test1.txt";
-			//string text_line = "";
-			//System.IO.StreamWriter objWriter;
-			
-			//objWriter = new System.IO.StreamWriter(file_name, true);
-
-			
-			//objWriter.Write(textBox1.Text);
-			
-			//objWriter.Close();
-
-			MessageBox.Show("File is written");
-
-
-			
+            //--------------------------------------------------------------------------------------
+            // A message box to confirm that the file has successfully saved.
+            //--------------------------------------------------------------------------------------
+            MessageBox.Show("File Saved Successfully");
 		}
 
-		private void tileButton1_MouseDown(object sender,
+        //--------------------------------------------------------------------------------------
+        // 
+        //--------------------------------------------------------------------------------------
+        private void tileButton1_MouseDown(object sender,
 		System.Windows.Forms.MouseEventArgs e)
 		{
 			//tileButton1.DoDragDrop(tileButton1.Value, DragDropEffects.Copy |
